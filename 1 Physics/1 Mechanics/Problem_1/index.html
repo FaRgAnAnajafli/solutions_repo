@@ -48,6 +48,22 @@
 <ul class="current">
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#projectile-motion-definition-equations">Projectile Motion: Definition &amp; Equations</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#equations-of-projectile-motion">Equations of Projectile Motion</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#1-horizontal-motion">1. Horizontal Motion</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#2-vertical-motion">2. Vertical Motion</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#3-time-of-flight">3. Time of Flight</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#4-range-horizontal-distance">4. Range (Horizontal Distance)</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#key-points">Key Points</a>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Problem_2/">Problem 2</a>
@@ -172,65 +188,52 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
-<p>\documentclass{article}
-\usepackage{amsmath}</p>
-<p>\begin{document}</p>
-<p>\section{Components of Initial Velocity}
-When a projectile is launched with an initial velocity <span class="arithmatex">\( v_0 \)</span> at an angle <span class="arithmatex">\( \theta \)</span>, it has two components:</p>
-<div class="arithmatex">\[\begin{itemize}
-  \item \textbf{Horizontal velocity:}
-    \[
-    v_x = v_0 \cos\theta
-    \]
-  \item \textbf{Vertical velocity:}
-    \[
-    v_y = v_0 \sin\theta
-    \]
-\end{itemize}\]</div>
-<p>At any time <span class="arithmatex">\( t \)</span>, the velocity components are:
-\begin{itemize}
-  \item \textbf{Horizontal velocity remains constant:}
-    [
-    v_x = v_0 \cos\theta
-    ]
-  \item \textbf{Vertical velocity changes due to gravity:}
-    [
-    v_y = v_0 \sin\theta - g t
-    ]
-    where <span class="arithmatex">\( g = 9.8 \, m/s^2 \)</span> (acceleration due to gravity).
-\end{itemize}</p>
-<p>\section{Time of Flight}
-The total time the projectile remains in the air is:
-[
-T = \frac{2 v_0 \sin\theta}{g}
-]</p>
-<p>\section{Maximum Height}
-The highest vertical position reached by the projectile is:
-[
-H = \frac{(v_0 \sin\theta)^2}{2g}
-]</p>
-<p>\section{Horizontal Range}
-The total horizontal distance traveled by the projectile is:
-[
-R = \frac{v_0^2 \sin 2\theta}{g}
-]</p>
-<p>\section{Equations of Motion}
-\textbf{Horizontal Position:}
-[
-x = v_0 \cos\theta \cdot t
-]</p>
-<p>\textbf{Vertical Position:}
-[
-y = v_0 \sin\theta \cdot t - \frac{1}{2} g t^2
-]</p>
-<p>\section{Key Points about Projectile Motion}
-\begin{itemize}
-  \item The horizontal velocity remains constant throughout the motion.
-  \item The vertical velocity decreases while rising (due to gravity), becomes zero at the peak, and then increases downward.
-  \item The trajectory follows a parabolic path.
-  \item The time to reach maximum height is <span class="arithmatex">\( T/2 \)</span>, and then it takes the same time to fall back.
-\end{itemize}</p>
-<p>\end{document}</p>
+<p>-</p>
+<h3 id="projectile-motion-definition-equations"><strong>Projectile Motion: Definition &amp; Equations</strong></h3>
+<p><strong>Projectile motion</strong> refers to the motion of an object launched into the air under the influence of gravity, following a <strong>parabolic path</strong>. It is analyzed as two independent motions:  </p>
+<ol>
+<li><strong>Horizontal motion</strong> – constant velocity (no horizontal acceleration if air resistance is ignored).  </li>
+<li><strong>Vertical motion</strong> – uniformly accelerated motion due to gravity.  </li>
+</ol>
+<hr/>
+<h3 id="equations-of-projectile-motion"><strong>Equations of Projectile Motion</strong></h3>
+<p>Let:<br/>
+- <span class="arithmatex">\( v_0 \)</span> = Initial velocity<br/>
+- <span class="arithmatex">\( \theta \)</span> = Launch angle<br/>
+- <span class="arithmatex">\( g \)</span> = Acceleration due to gravity (9.81 m/s²)<br/>
+- <span class="arithmatex">\( t \)</span> = Time  </p>
+<h4 id="1-horizontal-motion"><strong>1. Horizontal Motion</strong></h4>
+<ul>
+<li><strong>Velocity:</strong><br/>
+  $$ v_x = v_0 \cos\theta $$<br/>
+  (Constant, since no horizontal acceleration)  </li>
+<li><strong>Displacement:</strong><br/>
+  $$ x = v_0 \cos\theta \cdot t $$  </li>
+</ul>
+<h4 id="2-vertical-motion"><strong>2. Vertical Motion</strong></h4>
+<ul>
+<li><strong>Velocity:</strong><br/>
+  $$ v_y = v_0 \sin\theta - g t $$  </li>
+<li><strong>Displacement:</strong><br/>
+  $$ y = v_0 \sin\theta \cdot t - \frac{1}{2} g t^2 $$  </li>
+<li><strong>Time to reach max height:</strong><br/>
+  $$ t_{\text{max}} = \frac{v_0 \sin\theta}{g} $$  </li>
+<li><strong>Maximum height:</strong><br/>
+  $$ h_{\text{max}} = \frac{(v_0 \sin\theta)^2}{2g} $$  </li>
+</ul>
+<h4 id="3-time-of-flight"><strong>3. Time of Flight</strong></h4>
+<p>The total time the projectile is in the air:<br/>
+  $$ T = \frac{2 v_0 \sin\theta}{g} $$  </p>
+<h4 id="4-range-horizontal-distance"><strong>4. Range (Horizontal Distance)</strong></h4>
+<p>The total horizontal distance traveled:<br/>
+  $$ R = \frac{v_0^2 \sin(2\theta)}{g} $$  </p>
+<hr/>
+<h3 id="key-points"><strong>Key Points</strong></h3>
+<ul>
+<li>The trajectory is a <strong>parabola</strong>.  </li>
+<li>The horizontal and vertical motions are <strong>independent</strong> of each other.  </li>
+<li>The optimal launch angle for maximum range is <strong>45°</strong> (without air resistance).  </li>
+</ul>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
