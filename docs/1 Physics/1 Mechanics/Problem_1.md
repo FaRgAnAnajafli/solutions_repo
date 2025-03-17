@@ -1,72 +1,52 @@
 # Problem 1
 
-\documentclass{article}
-\usepackage{amsmath}
+-
+### **Projectile Motion: Definition & Equations**  
 
-\begin{document}
+**Projectile motion** refers to the motion of an object launched into the air under the influence of gravity, following a **parabolic path**. It is analyzed as two independent motions:  
 
-\section{Components of Initial Velocity}
-When a projectile is launched with an initial velocity \( v_0 \) at an angle \( \theta \), it has two components:
+1. **Horizontal motion** – constant velocity (no horizontal acceleration if air resistance is ignored).  
+2. **Vertical motion** – uniformly accelerated motion due to gravity.  
 
-\begin{itemize}
-  \item \textbf{Horizontal velocity:}
-    \[
-    v_x = v_0 \cos\theta
-    \]
-  \item \textbf{Vertical velocity:}
-    \[
-    v_y = v_0 \sin\theta
-    \]
-\end{itemize}
+---
 
-At any time \( t \), the velocity components are:
-\begin{itemize}
-  \item \textbf{Horizontal velocity remains constant:}
-    \[
-    v_x = v_0 \cos\theta
-    \]
-  \item \textbf{Vertical velocity changes due to gravity:}
-    \[
-    v_y = v_0 \sin\theta - g t
-    \]
-    where \( g = 9.8 \, m/s^2 \) (acceleration due to gravity).
-\end{itemize}
+### **Equations of Projectile Motion**  
 
-\section{Time of Flight}
-The total time the projectile remains in the air is:
-\[
-T = \frac{2 v_0 \sin\theta}{g}
-\]
+Let:  
+- \( v_0 \) = Initial velocity  
+- \( \theta \) = Launch angle  
+- \( g \) = Acceleration due to gravity (9.81 m/s²)  
+- \( t \) = Time  
 
-\section{Maximum Height}
-The highest vertical position reached by the projectile is:
-\[
-H = \frac{(v_0 \sin\theta)^2}{2g}
-\]
+#### **1. Horizontal Motion**  
+- **Velocity:**  
+  $$ v_x = v_0 \cos\theta $$  
+  (Constant, since no horizontal acceleration)  
+- **Displacement:**  
+  $$ x = v_0 \cos\theta \cdot t $$  
 
-\section{Horizontal Range}
-The total horizontal distance traveled by the projectile is:
-\[
-R = \frac{v_0^2 \sin 2\theta}{g}
-\]
+#### **2. Vertical Motion**  
+- **Velocity:**  
+  $$ v_y = v_0 \sin\theta - g t $$  
+- **Displacement:**  
+  $$ y = v_0 \sin\theta \cdot t - \frac{1}{2} g t^2 $$  
+- **Time to reach max height:**  
+  $$ t_{\text{max}} = \frac{v_0 \sin\theta}{g} $$  
+- **Maximum height:**  
+  $$ h_{\text{max}} = \frac{(v_0 \sin\theta)^2}{2g} $$  
 
-\section{Equations of Motion}
-\textbf{Horizontal Position:}
-\[
-x = v_0 \cos\theta \cdot t
-\]
+#### **3. Time of Flight**  
+The total time the projectile is in the air:  
+  $$ T = \frac{2 v_0 \sin\theta}{g} $$  
 
-\textbf{Vertical Position:}
-\[
-y = v_0 \sin\theta \cdot t - \frac{1}{2} g t^2
-\]
+#### **4. Range (Horizontal Distance)**  
+The total horizontal distance traveled:  
+  $$ R = \frac{v_0^2 \sin(2\theta)}{g} $$  
 
-\section{Key Points about Projectile Motion}
-\begin{itemize}
-  \item The horizontal velocity remains constant throughout the motion.
-  \item The vertical velocity decreases while rising (due to gravity), becomes zero at the peak, and then increases downward.
-  \item The trajectory follows a parabolic path.
-  \item The time to reach maximum height is \( T/2 \), and then it takes the same time to fall back.
-\end{itemize}
+---
 
-\end{document}
+### **Key Points**  
+- The trajectory is a **parabola**.  
+- The horizontal and vertical motions are **independent** of each other.  
+- The optimal launch angle for maximum range is **45°** (without air resistance).  
+
