@@ -35,11 +35,25 @@ At any time \( t \), the velocity components are:
 ---
 
 ## **2. Time of Flight (\( T \))**
-The total time the projectile spends in the air is determined by the time taken to reach the highest point and then fall back down:  
-\[
-T = \frac{2 v_0 \sin\theta}{g}
-\]
+Total time the projectile remains in the air:
 
+T
+=
+2
+v
+0
+sin
+⁡
+θ
+g
+T= 
+g
+2v 
+0
+​	
+ sinθ
+​	
+ 
 ---
 
 ## **3. Maximum Height (\( H \))**
