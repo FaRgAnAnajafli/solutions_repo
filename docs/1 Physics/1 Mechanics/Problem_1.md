@@ -83,3 +83,4 @@ R = \frac{v_0^2 \sin 2\theta}{g}
 - A bullet fired from a gun  
 - A rocket or missile trajectory  
 - Water coming out of a hose at an angle  
+
