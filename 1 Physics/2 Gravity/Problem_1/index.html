@@ -172,43 +172,83 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <p>import math</p>
-<h1 id="universal-gravitational-constant-nm2kg2">Universal Gravitational Constant (N·m²/kg²)</h1>
-<p>G = 6.674 * (10 ** -11)</p>
+<h1 id="gravitational-constant-m3-kg-1-s-2">Gravitational constant (m^3 kg^-1 s^-2)</h1>
+<p>G = 6.67430e-11</p>
 <h1 id="mass-of-earth-kg">Mass of Earth (kg)</h1>
-<p>M_EARTH = 5.972 * (10 ** 24)</p>
+<p>M_EARTH = 5.972e24</p>
 <h1 id="radius-of-earth-m">Radius of Earth (m)</h1>
 <p>R_EARTH = 6.371 * (10 ** 6)</p>
 <p>def gravitational_force(m1, m2, r):
-    """Calculates the gravitational force between two masses."""
-    return G * (m1 * m2) / (r ** 2)</p>
+    """
+    This function calculates the gravitational force between two masses.</p>
+<pre><code>Parameters:
+m1 -- Mass of the first object (in kg)
+m2 -- Mass of the second object (in kg)
+r -- Distance between the two masses (in meters)
+
+Returns:
+Gravitational force (in Newtons)
+"""
+# Gravitational force formula: F = G * (m1 * m2) / r^2
+force = G * (m1 * m2) / (r ** 2)
+return force
+</code></pre>
 <p>def free_fall_velocity(t, g=9.81):
-    """Calculates velocity during free fall (m/s)."""
-    return g * t</p>
+    """
+    This function calculates the velocity of an object during free fall.</p>
+<pre><code>Parameters:
+t -- Time of free fall (in seconds)
+g -- Gravitational acceleration (in m/s^2, default value is 9.81 m/s^2)
+
+Returns:
+Velocity during free fall (in m/s)
+"""
+# Free fall velocity formula: v = g * t
+velocity = g * t
+return velocity
+</code></pre>
 <p>def free_fall_distance(t, g=9.81):
-    """Calculates distance fallen during free fall (m)."""
-    return 0.5 * g * (t ** 2)</p>
+    """
+    This function calculates the distance fallen by an object during free fall.</p>
+<pre><code>Parameters:
+t -- Time of free fall (in seconds)
+g -- Gravitational acceleration (in m/s^2, default value is 9.81 m/s^2)
+
+Returns:
+Distance fallen during free fall (in meters)
+"""
+# Free fall distance formula: d = 0.5 * g * t^2
+distance = 0.5 * g * (t ** 2)
+return distance
+</code></pre>
 <p>def orbital_velocity(r, M=M_EARTH):
-    """Calculates the orbital velocity required for an object to stay in orbit (m/s)."""
-    return math.sqrt(G * M / r)</p>
+    """
+    This function calculates the orbital velocity required for an object to stay in orbit.</p>
+<pre><code>Parameters:
+r -- Orbital radius (in meters)
+M -- Mass of Earth (in kg, default value is Earth's mass)
+
+Returns:
+Orbital velocity (in m/s)
+"""
+# Orbital velocity formula: v = √(G * M / r)
+velocity = math.sqrt(G * M / r)
+return velocity
+</code></pre>
 <p>def escape_velocity(R, M=M_EARTH):
-    """Calculates the escape velocity required to leave Earth's gravity (m/s)."""
-    return math.sqrt(2 * G * M / R)</p>
-<h1 id="example-usage">Example usage</h1>
-<p>mass1 = 70  # kg (human mass)
-mass2 = M_EARTH  # kg (Earth mass)
-distance = R_EARTH  # m (Earth's surface)</p>
-<p>force = gravitational_force(mass1, mass2, distance)
-fall_time = 5  # seconds
-velocity = free_fall_velocity(fall_time)
-distance_fallen = free_fall_distance(fall_time)
-orbit_speed = orbital_velocity(R_EARTH)
-escape_speed = escape_velocity(R_EARTH)</p>
-<h1 id="print-results">Print results</h1>
-<p>print(f"Gravitational Force: {force:.2f} N")
-print(f"Velocity after {fall_time} seconds of free fall: {velocity:.2f} m/s")
-print(f"Distance fallen after {fall_time} seconds: {distance_fallen:.2f} m")
-print(f"Orbital speed for Earth: {orbit_speed:.2f} m/s")
-print(f"Escape velocity for Earth: {escape_speed:.2f} m/s")</p>
+    """
+    This function calculates the escape velocity required to leave Earth's gravity.</p>
+<pre><code>Parameters:
+R -- Distance from Earth's surface (in meters)
+M -- Mass of Earth (in kg, default value is Earth's mass)
+
+Returns:
+Escape velocity (in m/s)
+"""
+# Escape velocity formula: v_escape = √(2 * G * M / R)
+velocity = math.sqrt(2 * G * M / R)
+return velocity
+</code></pre>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
