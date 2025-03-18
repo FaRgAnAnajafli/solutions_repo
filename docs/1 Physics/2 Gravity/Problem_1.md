@@ -1,49 +1,87 @@
+
 import math
 
-# Universal Gravitational Constant (N·m²/kg²)
-G = 6.674 * (10 ** -11)
+# Gravitational constant (m^3 kg^-1 s^-2)
+G = 6.67430e-11
 
 # Mass of Earth (kg)
-M_EARTH = 5.972 * (10 ** 24)
+M_EARTH = 5.972e24
 
 # Radius of Earth (m)
 R_EARTH = 6.371 * (10 ** 6)
 
 def gravitational_force(m1, m2, r):
-    """Calculates the gravitational force between two masses."""
-    return G * (m1 * m2) / (r ** 2)
+    """
+    This function calculates the gravitational force between two masses.
+    
+    Parameters:
+    m1 -- Mass of the first object (in kg)
+    m2 -- Mass of the second object (in kg)
+    r -- Distance between the two masses (in meters)
+    
+    Returns:
+    Gravitational force (in Newtons)
+    """
+    # Gravitational force formula: F = G * (m1 * m2) / r^2
+    force = G * (m1 * m2) / (r ** 2)
+    return force
 
 def free_fall_velocity(t, g=9.81):
-    """Calculates velocity during free fall (m/s)."""
-    return g * t
+    """
+    This function calculates the velocity of an object during free fall.
+    
+    Parameters:
+    t -- Time of free fall (in seconds)
+    g -- Gravitational acceleration (in m/s^2, default value is 9.81 m/s^2)
+    
+    Returns:
+    Velocity during free fall (in m/s)
+    """
+    # Free fall velocity formula: v = g * t
+    velocity = g * t
+    return velocity
 
 def free_fall_distance(t, g=9.81):
-    """Calculates distance fallen during free fall (m)."""
-    return 0.5 * g * (t ** 2)
+    """
+    This function calculates the distance fallen by an object during free fall.
+    
+    Parameters:
+    t -- Time of free fall (in seconds)
+    g -- Gravitational acceleration (in m/s^2, default value is 9.81 m/s^2)
+    
+    Returns:
+    Distance fallen during free fall (in meters)
+    """
+    # Free fall distance formula: d = 0.5 * g * t^2
+    distance = 0.5 * g * (t ** 2)
+    return distance
 
 def orbital_velocity(r, M=M_EARTH):
-    """Calculates the orbital velocity required for an object to stay in orbit (m/s)."""
-    return math.sqrt(G * M / r)
+    """
+    This function calculates the orbital velocity required for an object to stay in orbit.
+    
+    Parameters:
+    r -- Orbital radius (in meters)
+    M -- Mass of Earth (in kg, default value is Earth's mass)
+    
+    Returns:
+    Orbital velocity (in m/s)
+    """
+    # Orbital velocity formula: v = √(G * M / r)
+    velocity = math.sqrt(G * M / r)
+    return velocity
 
 def escape_velocity(R, M=M_EARTH):
-    """Calculates the escape velocity required to leave Earth's gravity (m/s)."""
-    return math.sqrt(2 * G * M / R)
-
-# Example usage
-mass1 = 70  # kg (human mass)
-mass2 = M_EARTH  # kg (Earth mass)
-distance = R_EARTH  # m (Earth's surface)
-
-force = gravitational_force(mass1, mass2, distance)
-fall_time = 5  # seconds
-velocity = free_fall_velocity(fall_time)
-distance_fallen = free_fall_distance(fall_time)
-orbit_speed = orbital_velocity(R_EARTH)
-escape_speed = escape_velocity(R_EARTH)
-
-# Print results
-print(f"Gravitational Force: {force:.2f} N")
-print(f"Velocity after {fall_time} seconds of free fall: {velocity:.2f} m/s")
-print(f"Distance fallen after {fall_time} seconds: {distance_fallen:.2f} m")
-print(f"Orbital speed for Earth: {orbit_speed:.2f} m/s")
-print(f"Escape velocity for Earth: {escape_speed:.2f} m/s")
+    """
+    This function calculates the escape velocity required to leave Earth's gravity.
+    
+    Parameters:
+    R -- Distance from Earth's surface (in meters)
+    M -- Mass of Earth (in kg, default value is Earth's mass)
+    
+    Returns:
+    Escape velocity (in m/s)
+    """
+    # Escape velocity formula: v_escape = √(2 * G * M / R)
+    velocity = math.sqrt(2 * G * M / R)
+    return velocity
