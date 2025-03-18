@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 2 - Physics and Mathematics</title>
+<title>Newton's Laws of Motion 🚀 - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 2";
+        var mkdocs_page_name = "Newton\u0027s Laws of Motion \ud83d\ude80";
         var mkdocs_page_input_path = "1 Physics/1 Mechanics/Problem_2.md";
         var mkdocs_page_url = null;
       </script>
@@ -48,8 +48,16 @@
 <ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../Problem_1/">Problem 1</a>
 </li>
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 2</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Newton's Laws of Motion 🚀</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#1st-law-law-of-inertia">1st Law: Law of Inertia</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#2nd-law-law-of-acceleration">2nd Law: Law of Acceleration</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#3rd-law-action-and-reaction">3rd Law: Action and Reaction</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#code-example-newtons-2nd-law-in-python">Code Example: Newton's 2nd Law in Python</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -163,7 +171,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">1 Mechanics</li>
-<li class="breadcrumb-item active">Problem 2</li>
+<li class="breadcrumb-item active">Newton's Laws of Motion 🚀</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -171,73 +179,48 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-2">Problem 2</h1>
-<p>\documentclass{article}
-\usepackage{amsmath}
-\usepackage{physics}</p>
-<p>\begin{document}</p>
-<p>\title{Projectile Motion: Equations and Key Concepts}
-\author{Physics Fundamentals}
-\date{\today}
-\maketitle</p>
-<p>\section{Definition of Projectile Motion}
-Projectile motion refers to the motion of an object launched into the air under the influence of gravity, following a \textbf{parabolic path}. It consists of two independent motions:
-\begin{itemize}
-    \item \textbf{Horizontal motion} – Constant velocity (<span class="arithmatex">\( v_x \)</span>), as there is no horizontal acceleration (assuming air resistance is negligible).
-    \item \textbf{Vertical motion} – Accelerated motion due to gravity (<span class="arithmatex">\( g \)</span>).
-\end{itemize}</p>
-<p>\section{Equations of Motion}</p>
-<p>Let:
-\begin{itemize}
-    \item <span class="arithmatex">\( v_0 \)</span> = Initial velocity
-    \item <span class="arithmatex">\( \theta \)</span> = Launch angle
-    \item <span class="arithmatex">\( g \)</span> = Acceleration due to gravity (9.81 m/s²)
-    \item <span class="arithmatex">\( t \)</span> = Time
-\end{itemize}</p>
-<p>\subsection{1. Horizontal Motion}
-\textbf{Velocity:}
+<h1 id="newtons-laws-of-motion">Newton's Laws of Motion 🚀</h1>
+<p>Newton's laws of motion describe the relationship between the motion of an object and the forces acting on it. These laws are fundamental principles in physics.</p>
+<h2 id="1st-law-law-of-inertia"><strong>1st Law: Law of Inertia</strong></h2>
+<blockquote>
+<p>An object at rest stays at rest, and an object in motion stays in motion with the same speed and in the same direction unless acted upon by an unbalanced force.</p>
+</blockquote>
+<p>Mathematically:
 [
-v_x = v_0 \cos\theta
-]
-(constant, since no horizontal acceleration)</p>
-<p>\textbf{Displacement:}
-[
-x = v_0 \cos\theta \cdot t
+F_{\text{net}} = 0 \Rightarrow \text{constant velocity}
 ]</p>
-<p>\subsection{2. Vertical Motion}
-\textbf{Velocity:}
+<h2 id="2nd-law-law-of-acceleration"><strong>2nd Law: Law of Acceleration</strong></h2>
+<blockquote>
+<p>The acceleration of an object is directly proportional to the net force acting on it and inversely proportional to its mass.</p>
+</blockquote>
+<div class="arithmatex">\[
+F = m a
+\]</div>
+<p>Where:
+- <span class="arithmatex">\( F \)</span> = Net force (N)
+- <span class="arithmatex">\( m \)</span> = Mass (kg)
+- <span class="arithmatex">\( a \)</span> = Acceleration (m/s²)</p>
+<h2 id="3rd-law-action-and-reaction"><strong>3rd Law: Action and Reaction</strong></h2>
+<blockquote>
+<p>For every action, there is an equal and opposite reaction.</p>
+</blockquote>
+<p>Mathematically:
 [
-v_y = v_0 \sin\theta - g t
+F_{\text{action}} = -F_{\text{reaction}}
 ]</p>
-<p>\textbf{Displacement:}
-[
-y = v_0 \sin\theta \cdot t - \frac{1}{2} g t^2
-]</p>
-<p>\textbf{Time to reach max height:}
-[
-t_{\text{max}} = \frac{v_0 \sin\theta}{g}
-]</p>
-<p>\textbf{Maximum height:}
-[
-h_{\text{max}} = \frac{(v_0 \sin\theta)^2}{2g}
-]</p>
-<p>\subsection{3. Time of Flight}
-The total time the projectile is in the air:
-[
-T = \frac{2 v_0 \sin\theta}{g}
-]</p>
-<p>\subsection{4. Range (Horizontal Distance)}
-The total horizontal distance traveled:
-[
-R = \frac{v_0^2 \sin(2\theta)}{g}
-]</p>
-<p>\section{Key Points}
-\begin{itemize}
-    \item The trajectory follows a \textbf{parabolic path}.
-    \item The horizontal and vertical motions are \textbf{independent} of each other.
-    \item The optimal launch angle for maximum range is \textbf{45°} (without air resistance).
-\end{itemize}</p>
-<p>\end{document}</p>
+<p>This means forces always occur in <strong>pairs</strong>.</p>
+<hr/>
+<h2 id="code-example-newtons-2nd-law-in-python"><strong>Code Example: Newton's 2nd Law in Python</strong></h2>
+<p>```python</p>
+<h1 id="newtons-second-law-f-m-a">Newton's Second Law: F = m * a</h1>
+<p>def newton_second_law(mass, acceleration):
+    """Calculate Force using Newton's 2nd Law."""
+    return mass * acceleration</p>
+<h1 id="example">Example</h1>
+<p>mass = 10  # kg
+acceleration = 5  # m/s²
+force = newton_second_law(mass, acceleration)</p>
+<p>print(f"Force: {force} N")  # Output: Force: 50 N</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
