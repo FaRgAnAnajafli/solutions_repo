@@ -55,6 +55,8 @@
 <li class="toctree-l1 current"><a class="reference internal current">2 Gravity</a>
 <ul class="current">
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
+<ul class="current">
+</ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Problem_2/">Problem 2</a>
 </li>
@@ -169,66 +171,44 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<p>\documentclass{article}
-\usepackage{amsmath}
-\usepackage{physics}</p>
-<p>\begin{document}</p>
-<p>\title{Gravity: Equations and Concepts}
-\author{Physics Fundamentals}
-\date{\today}
-\maketitle</p>
-<p>\section{Gravitational Force}</p>
-<p>Gravity is the force by which a planet or other body draws objects toward its center. The gravitational force between two masses is given by:</p>
-<div class="arithmatex">\[
-F = G \frac{m_1 m_2}{r^2}
-\]</div>
-<p>where:
-\begin{itemize}
-    \item <span class="arithmatex">\( F \)</span> = Gravitational force (N)
-    \item <span class="arithmatex">\( G \)</span> = Gravitational constant (<span class="arithmatex">\(6.674 \times 10^{-11} \text{ Nm}^2/\text{kg}^2\)</span>)
-    \item <span class="arithmatex">\( m_1, m_2 \)</span> = Masses of the objects (kg)
-    \item <span class="arithmatex">\( r \)</span> = Distance between the objects (m)
-\end{itemize}</p>
-<p>\section{Acceleration Due to Gravity (g)}</p>
-<p>The acceleration experienced by an object due to Earth's gravity is approximately:</p>
-<div class="arithmatex">\[
-g = \frac{G M}{R^2}
-\]</div>
-<p>where:
-\begin{itemize}
-    \item <span class="arithmatex">\( g \)</span> = Acceleration due to gravity on Earth (9.81 m/s²)
-    \item <span class="arithmatex">\( M \)</span> = Mass of the Earth (<span class="arithmatex">\( 5.972 \times 10^{24} \)</span> kg)
-    \item <span class="arithmatex">\( R \)</span> = Radius of the Earth (<span class="arithmatex">\( 6.371 \times 10^6 \)</span> m)
-\end{itemize}</p>
-<p>\section{Free Fall Motion}</p>
-<p>For an object in free fall (neglecting air resistance), the equations of motion are:</p>
-<div class="arithmatex">\[
-v = v_0 + gt
-\]</div>
-<div class="arithmatex">\[
-y = v_0 t + \frac{1}{2} g t^2
-\]</div>
-<div class="arithmatex">\[
-v^2 = v_0^2 + 2g y
-\]</div>
-<p>where:
-\begin{itemize}
-    \item <span class="arithmatex">\( v_0 \)</span> = Initial velocity (m/s)
-    \item <span class="arithmatex">\( v \)</span> = Final velocity (m/s)
-    \item <span class="arithmatex">\( t \)</span> = Time (s)
-    \item <span class="arithmatex">\( y \)</span> = Displacement (m)
-\end{itemize}</p>
-<p>\section{Orbital Motion and Escape Velocity}</p>
-<p>The velocity needed for an object to stay in orbit around Earth is:</p>
-<div class="arithmatex">\[
-v_{\text{orbit}} = \sqrt{\frac{G M}{r}}
-\]</div>
-<p>The <strong>escape velocity</strong>, which is the minimum speed needed to break free from Earth's gravitational pull, is:</p>
-<div class="arithmatex">\[
-v_{\text{esc}} = \sqrt{\frac{2 G M}{R}}
-\]</div>
-<p>For Earth, this is approximately <strong>11.2 km/s</strong>.</p>
-<p>\end{document}</p>
+<p>import math</p>
+<h1 id="universal-gravitational-constant-nm2kg2">Universal Gravitational Constant (N·m²/kg²)</h1>
+<p>G = 6.674 * (10 ** -11)</p>
+<h1 id="mass-of-earth-kg">Mass of Earth (kg)</h1>
+<p>M_EARTH = 5.972 * (10 ** 24)</p>
+<h1 id="radius-of-earth-m">Radius of Earth (m)</h1>
+<p>R_EARTH = 6.371 * (10 ** 6)</p>
+<p>def gravitational_force(m1, m2, r):
+    """Calculates the gravitational force between two masses."""
+    return G * (m1 * m2) / (r ** 2)</p>
+<p>def free_fall_velocity(t, g=9.81):
+    """Calculates velocity during free fall (m/s)."""
+    return g * t</p>
+<p>def free_fall_distance(t, g=9.81):
+    """Calculates distance fallen during free fall (m)."""
+    return 0.5 * g * (t ** 2)</p>
+<p>def orbital_velocity(r, M=M_EARTH):
+    """Calculates the orbital velocity required for an object to stay in orbit (m/s)."""
+    return math.sqrt(G * M / r)</p>
+<p>def escape_velocity(R, M=M_EARTH):
+    """Calculates the escape velocity required to leave Earth's gravity (m/s)."""
+    return math.sqrt(2 * G * M / R)</p>
+<h1 id="example-usage">Example usage</h1>
+<p>mass1 = 70  # kg (human mass)
+mass2 = M_EARTH  # kg (Earth mass)
+distance = R_EARTH  # m (Earth's surface)</p>
+<p>force = gravitational_force(mass1, mass2, distance)
+fall_time = 5  # seconds
+velocity = free_fall_velocity(fall_time)
+distance_fallen = free_fall_distance(fall_time)
+orbit_speed = orbital_velocity(R_EARTH)
+escape_speed = escape_velocity(R_EARTH)</p>
+<h1 id="print-results">Print results</h1>
+<p>print(f"Gravitational Force: {force:.2f} N")
+print(f"Velocity after {fall_time} seconds of free fall: {velocity:.2f} m/s")
+print(f"Distance fallen after {fall_time} seconds: {distance_fallen:.2f} m")
+print(f"Orbital speed for Earth: {orbit_speed:.2f} m/s")
+print(f"Escape velocity for Earth: {escape_speed:.2f} m/s")</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
