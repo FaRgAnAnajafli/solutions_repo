@@ -5,44 +5,14 @@
 
 \begin{document}
 
-\title{Newton's Laws of Motion and Gravity}
+\title{Gravity: Equations and Concepts}
 \author{Physics Fundamentals}
 \date{\today}
 \maketitle
 
-\section{Newton's Laws of Motion}
+\section{Gravitational Force}
 
-\subsection{First Law: Law of Inertia}
-An object at rest stays at rest, and an object in motion stays in motion with the same velocity unless acted upon by an unbalanced force.
-
-\[
-F_{\text{net}} = 0 \Rightarrow \text{constant velocity}
-\]
-
-\subsection{Second Law: Law of Acceleration}
-The acceleration of an object is directly proportional to the net force acting on it and inversely proportional to its mass.
-
-\[
-F = m a
-\]
-
-where:
-\begin{itemize}
-    \item \( F \) = Net force (N)
-    \item \( m \) = Mass (kg)
-    \item \( a \) = Acceleration (m/s²)
-\end{itemize}
-
-\subsection{Third Law: Action and Reaction}
-For every action, there is an equal and opposite reaction.
-
-\[
-F_{\text{action}} = -F_{\text{reaction}}
-\]
-
-\section{Newton's Law of Universal Gravitation}
-
-Newton’s Law of Universal Gravitation states that every mass attracts every other mass with a force that is proportional to the product of their masses and inversely proportional to the square of the distance between them.
+Gravity is the force by which a planet or other body draws objects toward its center. The gravitational force between two masses is given by:
 
 \[
 F = G \frac{m_1 m_2}{r^2}
@@ -56,15 +26,59 @@ where:
     \item \( r \) = Distance between the objects (m)
 \end{itemize}
 
-\section{Example Calculation: Gravitational Force}
-If two masses, \( m_1 = 5 \) kg and \( m_2 = 10 \) kg, are 2 meters apart, the gravitational force between them is:
+\section{Acceleration Due to Gravity (g)}
+
+The acceleration experienced by an object due to Earth's gravity is approximately:
 
 \[
-F = (6.674 \times 10^{-11}) \frac{(5)(10)}{2^2}
+g = \frac{G M}{R^2}
+\]
+
+where:
+\begin{itemize}
+    \item \( g \) = Acceleration due to gravity on Earth (9.81 m/s²)
+    \item \( M \) = Mass of the Earth (\( 5.972 \times 10^{24} \) kg)
+    \item \( R \) = Radius of the Earth (\( 6.371 \times 10^6 \) m)
+\end{itemize}
+
+\section{Free Fall Motion}
+
+For an object in free fall (neglecting air resistance), the equations of motion are:
+
+\[
+v = v_0 + gt
 \]
 
 \[
-F = 8.34 \times 10^{-11} \text{ N}
+y = v_0 t + \frac{1}{2} g t^2
 \]
+
+\[
+v^2 = v_0^2 + 2g y
+\]
+
+where:
+\begin{itemize}
+    \item \( v_0 \) = Initial velocity (m/s)
+    \item \( v \) = Final velocity (m/s)
+    \item \( t \) = Time (s)
+    \item \( y \) = Displacement (m)
+\end{itemize}
+
+\section{Orbital Motion and Escape Velocity}
+
+The velocity needed for an object to stay in orbit around Earth is:
+
+\[
+v_{\text{orbit}} = \sqrt{\frac{G M}{r}}
+\]
+
+The **escape velocity**, which is the minimum speed needed to break free from Earth's gravitational pull, is:
+
+\[
+v_{\text{esc}} = \sqrt{\frac{2 G M}{R}}
+\]
+
+For Earth, this is approximately **11.2 km/s**.
 
 \end{document}
