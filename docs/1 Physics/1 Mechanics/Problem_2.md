@@ -1,50 +1,48 @@
-# Newton's Laws of Motion 🚀
 
-Newton's laws of motion describe the relationship between the motion of an object and the forces acting on it. These laws are fundamental principles in physics.
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{physics}
 
-## **1st Law: Law of Inertia**
-> An object at rest stays at rest, and an object in motion stays in motion with the same speed and in the same direction unless acted upon by an unbalanced force.
+\begin{document}
 
-Mathematically:
+\title{Newton's Laws of Motion}
+\author{Physics Fundamentals}
+\date{\today}
+\maketitle
+
+\section{Newton's First Law: Law of Inertia}
+An object at rest stays at rest, and an object in motion stays in motion with the same velocity unless acted upon by an unbalanced force.
+
 \[
 F_{\text{net}} = 0 \Rightarrow \text{constant velocity}
 \]
 
-## **2nd Law: Law of Acceleration**
-> The acceleration of an object is directly proportional to the net force acting on it and inversely proportional to its mass.
+\section{Newton's Second Law: Law of Acceleration}
+The acceleration of an object is directly proportional to the net force acting on it and inversely proportional to its mass.
 
 \[
 F = m a
 \]
 
-Where:
-- \( F \) = Net force (N)
-- \( m \) = Mass (kg)
-- \( a \) = Acceleration (m/s²)
+where:
+\begin{itemize}
+    \item \( F \) = Net force (N)
+    \item \( m \) = Mass (kg)
+    \item \( a \) = Acceleration (m/s²)
+\end{itemize}
 
-## **3rd Law: Action and Reaction**
-> For every action, there is an equal and opposite reaction.
+\section{Newton's Third Law: Action and Reaction}
+For every action, there is an equal and opposite reaction.
 
-Mathematically:
 \[
 F_{\text{action}} = -F_{\text{reaction}}
 \]
 
-This means forces always occur in **pairs**.
+\section{Example Calculation: Newton's Second Law}
+If a 10 kg object is subjected to a force of 50 N, its acceleration is:
 
----
+\[
+a = \frac{F}{m} = \frac{50}{10} = 5 \text{ m/s}^2
+\]
 
-## **Code Example: Newton's 2nd Law in Python**
-```python
-# Newton's Second Law: F = m * a
-
-def newton_second_law(mass, acceleration):
-    """Calculate Force using Newton's 2nd Law."""
-    return mass * acceleration
-
-# Example
-mass = 10  # kg
-acceleration = 5  # m/s²
-force = newton_second_law(mass, acceleration)
-
-print(f"Force: {force} N")  # Output: Force: 50 N
+\end{document}
