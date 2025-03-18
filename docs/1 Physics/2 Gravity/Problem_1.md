@@ -1,83 +1,49 @@
-\documentclass{article}
-\usepackage{amsmath}
-\usepackage{physics}
+import math
 
-\begin{document}
+# Universal Gravitational Constant (N·m²/kg²)
+G = 6.674 * (10 ** -11)
 
-\title{Gravity: Equations and Concepts}
-\author{Physics Fundamentals}
-\date{\today}
-\maketitle
+# Mass of Earth (kg)
+M_EARTH = 5.972 * (10 ** 24)
 
-\section{Gravitational Force}
+# Radius of Earth (m)
+R_EARTH = 6.371 * (10 ** 6)
 
-Gravity is the force by which a planet or other body draws objects toward its center. The gravitational force between two masses is given by:
+def gravitational_force(m1, m2, r):
+    """Calculates the gravitational force between two masses."""
+    return G * (m1 * m2) / (r ** 2)
 
-\[
-F = G \frac{m_1 m_2}{r^2}
-\]
+def free_fall_velocity(t, g=9.81):
+    """Calculates velocity during free fall (m/s)."""
+    return g * t
 
-where:
-\begin{itemize}
-    \item \( F \) = Gravitational force (N)
-    \item \( G \) = Gravitational constant (\(6.674 \times 10^{-11} \text{ Nm}^2/\text{kg}^2\))
-    \item \( m_1, m_2 \) = Masses of the objects (kg)
-    \item \( r \) = Distance between the objects (m)
-\end{itemize}
+def free_fall_distance(t, g=9.81):
+    """Calculates distance fallen during free fall (m)."""
+    return 0.5 * g * (t ** 2)
 
-\section{Acceleration Due to Gravity (g)}
+def orbital_velocity(r, M=M_EARTH):
+    """Calculates the orbital velocity required for an object to stay in orbit (m/s)."""
+    return math.sqrt(G * M / r)
 
-The acceleration experienced by an object due to Earth's gravity is approximately:
+def escape_velocity(R, M=M_EARTH):
+    """Calculates the escape velocity required to leave Earth's gravity (m/s)."""
+    return math.sqrt(2 * G * M / R)
 
-\[
-g = \frac{G M}{R^2}
-\]
+# Example usage
+mass1 = 70  # kg (human mass)
+mass2 = M_EARTH  # kg (Earth mass)
+distance = R_EARTH  # m (Earth's surface)
 
-where:
-\begin{itemize}
-    \item \( g \) = Acceleration due to gravity on Earth (9.81 m/s²)
-    \item \( M \) = Mass of the Earth (\( 5.972 \times 10^{24} \) kg)
-    \item \( R \) = Radius of the Earth (\( 6.371 \times 10^6 \) m)
-\end{itemize}
+force = gravitational_force(mass1, mass2, distance)
+fall_time = 5  # seconds
+velocity = free_fall_velocity(fall_time)
+distance_fallen = free_fall_distance(fall_time)
+orbit_speed = orbital_velocity(R_EARTH)
+escape_speed = escape_velocity(R_EARTH)
 
-\section{Free Fall Motion}
-
-For an object in free fall (neglecting air resistance), the equations of motion are:
-
-\[
-v = v_0 + gt
-\]
-
-\[
-y = v_0 t + \frac{1}{2} g t^2
-\]
-
-\[
-v^2 = v_0^2 + 2g y
-\]
-
-where:
-\begin{itemize}
-    \item \( v_0 \) = Initial velocity (m/s)
-    \item \( v \) = Final velocity (m/s)
-    \item \( t \) = Time (s)
-    \item \( y \) = Displacement (m)
-\end{itemize}
-
-\section{Orbital Motion and Escape Velocity}
-
-The velocity needed for an object to stay in orbit around Earth is:
-
-\[
-v_{\text{orbit}} = \sqrt{\frac{G M}{r}}
-\]
-
-The **escape velocity**, which is the minimum speed needed to break free from Earth's gravitational pull, is:
-
-\[
-v_{\text{esc}} = \sqrt{\frac{2 G M}{R}}
-\]
-
-For Earth, this is approximately **11.2 km/s**.
-
-\end{document}
+# Print results
+print(f"Gravitational Force: {force:.2f} N")
+print(f"Velocity after {fall_time} seconds of free fall: {velocity:.2f} m/s")
+print(f"Distance fallen after {fall_time} seconds: {distance_fallen:.2f} m")
+print(f"Orbital speed for Earth: {orbit_speed:.2f} m/s")
+print(f"Escape velocity for Earth: {escape_speed:.2f} m/s")
