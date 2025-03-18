@@ -176,34 +176,12 @@
 \usepackage{amsmath}
 \usepackage{physics}</p>
 <p>\begin{document}</p>
-<p>\title{Newton's Laws of Motion and Gravity}
+<p>\title{Gravity: Equations and Concepts}
 \author{Physics Fundamentals}
 \date{\today}
 \maketitle</p>
-<p>\section{Newton's Laws of Motion}</p>
-<p>\subsection{First Law: Law of Inertia}
-An object at rest stays at rest, and an object in motion stays in motion with the same velocity unless acted upon by an unbalanced force.</p>
-<div class="arithmatex">\[
-F_{\text{net}} = 0 \Rightarrow \text{constant velocity}
-\]</div>
-<p>\subsection{Second Law: Law of Acceleration}
-The acceleration of an object is directly proportional to the net force acting on it and inversely proportional to its mass.</p>
-<div class="arithmatex">\[
-F = m a
-\]</div>
-<p>where:
-\begin{itemize}
-    \item <span class="arithmatex">\( F \)</span> = Net force (N)
-    \item <span class="arithmatex">\( m \)</span> = Mass (kg)
-    \item <span class="arithmatex">\( a \)</span> = Acceleration (m/s²)
-\end{itemize}</p>
-<p>\subsection{Third Law: Action and Reaction}
-For every action, there is an equal and opposite reaction.</p>
-<div class="arithmatex">\[
-F_{\text{action}} = -F_{\text{reaction}}
-\]</div>
-<p>\section{Newton's Law of Universal Gravitation}</p>
-<p>Newton’s Law of Universal Gravitation states that every mass attracts every other mass with a force that is proportional to the product of their masses and inversely proportional to the square of the distance between them.</p>
+<p>\section{Gravitational Force}</p>
+<p>Gravity is the force by which a planet or other body draws objects toward its center. The gravitational force between two masses is given by:</p>
 <div class="arithmatex">\[
 F = G \frac{m_1 m_2}{r^2}
 \]</div>
@@ -214,14 +192,45 @@ F = G \frac{m_1 m_2}{r^2}
     \item <span class="arithmatex">\( m_1, m_2 \)</span> = Masses of the objects (kg)
     \item <span class="arithmatex">\( r \)</span> = Distance between the objects (m)
 \end{itemize}</p>
-<p>\section{Example Calculation: Gravitational Force}
-If two masses, <span class="arithmatex">\( m_1 = 5 \)</span> kg and <span class="arithmatex">\( m_2 = 10 \)</span> kg, are 2 meters apart, the gravitational force between them is:</p>
+<p>\section{Acceleration Due to Gravity (g)}</p>
+<p>The acceleration experienced by an object due to Earth's gravity is approximately:</p>
 <div class="arithmatex">\[
-F = (6.674 \times 10^{-11}) \frac{(5)(10)}{2^2}
+g = \frac{G M}{R^2}
+\]</div>
+<p>where:
+\begin{itemize}
+    \item <span class="arithmatex">\( g \)</span> = Acceleration due to gravity on Earth (9.81 m/s²)
+    \item <span class="arithmatex">\( M \)</span> = Mass of the Earth (<span class="arithmatex">\( 5.972 \times 10^{24} \)</span> kg)
+    \item <span class="arithmatex">\( R \)</span> = Radius of the Earth (<span class="arithmatex">\( 6.371 \times 10^6 \)</span> m)
+\end{itemize}</p>
+<p>\section{Free Fall Motion}</p>
+<p>For an object in free fall (neglecting air resistance), the equations of motion are:</p>
+<div class="arithmatex">\[
+v = v_0 + gt
 \]</div>
 <div class="arithmatex">\[
-F = 8.34 \times 10^{-11} \text{ N}
+y = v_0 t + \frac{1}{2} g t^2
 \]</div>
+<div class="arithmatex">\[
+v^2 = v_0^2 + 2g y
+\]</div>
+<p>where:
+\begin{itemize}
+    \item <span class="arithmatex">\( v_0 \)</span> = Initial velocity (m/s)
+    \item <span class="arithmatex">\( v \)</span> = Final velocity (m/s)
+    \item <span class="arithmatex">\( t \)</span> = Time (s)
+    \item <span class="arithmatex">\( y \)</span> = Displacement (m)
+\end{itemize}</p>
+<p>\section{Orbital Motion and Escape Velocity}</p>
+<p>The velocity needed for an object to stay in orbit around Earth is:</p>
+<div class="arithmatex">\[
+v_{\text{orbit}} = \sqrt{\frac{G M}{r}}
+\]</div>
+<p>The <strong>escape velocity</strong>, which is the minimum speed needed to break free from Earth's gravitational pull, is:</p>
+<div class="arithmatex">\[
+v_{\text{esc}} = \sqrt{\frac{2 G M}{R}}
+\]</div>
+<p>For Earth, this is approximately <strong>11.2 km/s</strong>.</p>
 <p>\end{document}</p>
 </div>
 </div><footer>
