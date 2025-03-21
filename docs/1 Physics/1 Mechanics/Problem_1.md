@@ -50,3 +50,4 @@ The total horizontal distance traveled:
 - The horizontal and vertical motions are **independent** of each other.  
 - The optimal launch angle for maximum range is **45°** (without air resistance).  
 
+![alt text](image.png)
