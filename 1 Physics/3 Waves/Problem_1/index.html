@@ -237,48 +237,7 @@
 <h3 id="3-numerical-simulation-of-water-wave-interference">3. <strong>Numerical Simulation of Water Wave Interference</strong></h3>
 <p>We'll simulate the interference of two waves emanating from two different points on the surface of water. For simplicity, we'll assume the waves are circular and have the same frequency, amplitude, and wavelength. The resulting displacement at each point will be the sum of the individual wave displacements.</p>
 <h4 id="python-code-for-simulation">Python Code for Simulation:</h4>
-<pre><code class="language-python">import numpy as np
-import matplotlib.pyplot as plt
-
-# Constants
-A = 1.0  # Amplitude of the waves
-wavelength = 5.0  # Wavelength in meters
-k = 2 * np.pi / wavelength  # Wave number
-omega = 2 * np.pi  # Angular frequency (arbitrary for this simulation)
-t = 0  # Time at the initial moment
-source1 = np.array([5, 5])  # Position of source 1 (x1, y1)
-source2 = np.array([15, 15])  # Position of source 2 (x2, y2)
-
-# Create a grid for the water surface
-x = np.linspace(0, 20, 400)
-y = np.linspace(0, 20, 400)
-X, Y = np.meshgrid(x, y)
-
-# Function to compute the wave displacement at each point (superposition principle)
-def wave_displacement(X, Y, source, A, k, omega, t):
-    # Distance from the point (X, Y) to the wave source
-    r = np.sqrt((X - source[0])**2 + (Y - source[1])**2)
-    # Wave displacement (sinusoidal wave)
-    displacement = A * np.sin(k * r - omega * t)
-    return displacement
-
-# Calculate the total displacement from both sources
-displacement1 = wave_displacement(X, Y, source1, A, k, omega, t)
-displacement2 = wave_displacement(X, Y, source2, A, k, omega, t)
-total_displacement = displacement1 + displacement2
-
-# Plotting the interference pattern
-plt.figure(figsize=(8, 6))
-plt.contourf(X, Y, total_displacement, levels=50, cmap='RdGy')
-plt.colorbar(label='Displacement')
-plt.title('Interference Pattern of Water Waves from Two Sources')
-plt.xlabel('X Position (m)')
-plt.ylabel('Y Position (m)')
-plt.scatter(source1[0], source1[1], color='red', label='Source 1')
-plt.scatter(source2[0], source2[1], color='blue', label='Source 2')
-plt.legend()
-plt.show()
-</code></pre>
+<p><img alt="alt text" src="../image.png"/></p>
 <h3 id="4-explanation-of-the-simulation">4. <strong>Explanation of the Simulation</strong></h3>
 <p>In this simulation:
 - We define two sources at positions <span class="arithmatex">\( (5, 5) \)</span> and <span class="arithmatex">\( (15, 15) \)</span>.
