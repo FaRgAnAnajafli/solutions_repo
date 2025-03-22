@@ -123,3 +123,4 @@ The script produces a 3D plot of the particle's path under the influence of the 
 - **Non-Uniform Fields**: Extend the simulation to include non-uniform magnetic or electric fields and see how the particle’s trajectory is affected. Use a more complex method (e.g., Runge-Kutta) for better accuracy in these cases.
 
 This simulation and analysis help visualize the Lorentz force’s effects and provide insight into real-world systems that rely on controlling charged particle motion.
+
