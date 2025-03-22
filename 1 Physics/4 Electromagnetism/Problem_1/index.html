@@ -72,6 +72,8 @@
 <ul class="current">
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#problem-1_1">Problem 1</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -172,34 +174,35 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
-<p>import numpy as np</p>
-<h1 id="constants">Constants</h1>
-<p>q = -1.6e-19   # Electron charge (C)
+<h2 id="problem-1_1">Problem 1</h2>
+<pre><code class="language-python">import numpy as np
+
+# Constants
+q = -1.6e-19   # Electron charge (Coulombs)
 m = 9.11e-31   # Electron mass (kg)
-B = np.array([0, 0, 1])  # Magnetic field (T) along the z-axis
-E = np.array([0, 0, 0])  # Electric field (V/m), set to zero</p>
-<h1 id="initial-conditions">Initial conditions</h1>
-<p>r = np.array([0.0, 0.0, 0.0])  # Position (m)
-v = np.array([1e5, 0.0, 0.0])   # Velocity (m/s) along x-axis</p>
-<h1 id="time-parameters">Time parameters</h1>
-<p>dt = 1e-12    # Time step (s)
-T = 1e-9      # Total simulation time (s)
-steps = int(T / dt)  # Number of steps</p>
-<h1 id="arrays-to-store-results">Arrays to store results</h1>
-<p>positions = np.zeros((steps, 3))
-velocities = np.zeros((steps, 3))</p>
-<h1 id="simulation-loop">Simulation loop</h1>
-<p>for i in range(steps):
-    F = q * (E + np.cross(v, B))  # Lorentz force: F = q(E + v × B)
-    a = F / m  # Acceleration: a = F / m
-    v = v + a * dt  # Update velocity: v_new = v_old + a * dt
-    r = r + v * dt  # Update position: r_new = r_old + v * dt</p>
-<pre><code>positions[i] = r
-velocities[i] = v
+B = np.array([0, 0, 1])  # Magnetic field (Tesla) along the z-axis
+E = np.array([0, 0, 0])  # Electric field (V/m), set to zero
+
+# Initial conditions
+r = np.array([0.0, 0.0, 0.0])  # Initial position (m)
+v = np.array([1e5, 0.0, 0.0])   # Initial velocity (m/s) along x-axis
+
+# Time parameters
+dt = 1e-12    # Time step (seconds)
+T = 1e-9      # Total simulation time (seconds)
+steps = int(T / dt)  # Number of steps
+
+# Simulation loop
+for _ in range(steps):
+    F = q * (E + np.cross(v, B))  # Lorentz force
+    a = F / m  # Acceleration (F = ma)
+    v = v + a * dt  # Update velocity
+    r = r + v * dt  # Update position
+
+# Print results
+print("Final Position:", r)
+print("Final Velocity:", v)
 </code></pre>
-<h1 id="print-final-results">Print final results</h1>
-<p>print("Final Position (m):", positions[-1])
-print("Final Velocity (m/s):", velocities[-1])</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
