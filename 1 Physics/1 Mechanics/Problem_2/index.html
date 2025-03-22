@@ -49,6 +49,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../Problem_1/">Problem 1</a>
 </li>
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 2</a>
+<ul class="current">
+</ul>
 </li>
 </ul>
 </li>
@@ -169,6 +171,35 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
+<p>import numpy as np</p>
+<h1 id="constants">Constants</h1>
+<p>q = -1.6e-19   # Electron charge (Coulombs)
+m = 9.11e-31   # Electron mass (kg)
+B = np.array([0, 0, 1])  # Magnetic field (Tesla) along the z-axis
+E = np.array([0, 0, 0])  # Electric field (Volt/m), set to zero</p>
+<h1 id="initial-conditions">Initial conditions</h1>
+<p>r = np.array([0.0, 0.0, 0.0])  # Initial position (meters)
+v = np.array([1e5, 0.0, 0.0])   # Initial velocity (m/s) along x-axis</p>
+<h1 id="time-parameters">Time parameters</h1>
+<p>dt = 1e-12    # Time step (seconds)
+T = 1e-9      # Total simulation time (seconds)
+steps = int(T / dt)  # Number of steps (total time / time step)</p>
+<h1 id="simulation-loop-implementing-newtons-second-law">Simulation loop (implementing Newton's Second Law)</h1>
+<p>for _ in range(steps):
+    # Lorentz force (F = q * (E + v x B))
+    F = q * (E + np.cross(v, B))  </p>
+<pre><code># Acceleration (a = F / m)
+a = F / m
+
+# Update velocity (v(t+dt) = v(t) + a * dt)
+v = v + a * dt
+
+# Update position (r(t+dt) = r(t) + v * dt)
+r = r + v * dt
+</code></pre>
+<h1 id="print-results">Print results</h1>
+<p>print("Final Position:", r)
+print("Final Velocity:", v)</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
