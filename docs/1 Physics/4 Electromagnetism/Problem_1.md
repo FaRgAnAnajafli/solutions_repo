@@ -45,52 +45,8 @@ Where:
 - \( m \) is the mass of the particle.
 - \( \vec{v} \) is the velocity of the particle.
 
-Here is a Python script to simulate the particle's motion under various field conditions:
 
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-
-# Parameters
-q = 1.6e-19  # Charge of the particle (C)
-m = 1.67e-27  # Mass of the particle (kg, e.g., proton)
-E = np.array([0.0, 0.0, 0.0])  # Electric field (V/m)
-B = np.array([0.0, 0.0, 1.0])  # Magnetic field (T, along z-axis)
-v0 = np.array([1e5, 0.0, 0.0])  # Initial velocity (m/s)
-r0 = np.array([0.0, 0.0, 0.0])  # Initial position (m)
-dt = 1e-9  # Time step (s)
-t_max = 1e-6  # Maximum simulation time (s)
-
-# Initialize arrays for time, position, and velocity
-num_steps = int(t_max / dt)
-t = np.linspace(0, t_max, num_steps)
-r = np.zeros((num_steps, 3))  # Positions of the particle
-v = np.zeros((num_steps, 3))  # Velocities of the particle
-r[0] = r0
-v[0] = v0
-
-# Lorentz force calculation and Euler method
-for i in range(1, num_steps):
-    F = q * (E + np.cross(v[i-1], B))  # Lorentz force
-    a = F / m  # Acceleration
-    v[i] = v[i-1] + a * dt  # Update velocity
-    r[i] = r[i-1] + v[i] * dt  # Update position
-
-# Visualization: Plot the trajectory
-fig = plt.figure(figsize=(10, 6))
-ax = fig.add_subplot(111, projection='3d')
-ax.plot(r[:, 0], r[:, 1], r[:, 2], label='Particle Path')
-
-# Labels and title
-ax.set_xlabel('X Position (m)')
-ax.set_ylabel('Y Position (m)')
-ax.set_zlabel('Z Position (m)')
-ax.set_title('Trajectory of a Charged Particle in a Magnetic Field')
-
-plt.legend()
-plt.show()
-```
+![alt text](image-1.png)
 
 ### 3. Parameter Exploration:
 
@@ -123,4 +79,3 @@ The script produces a 3D plot of the particle's path under the influence of the 
 - **Non-Uniform Fields**: Extend the simulation to include non-uniform magnetic or electric fields and see how the particle’s trajectory is affected. Use a more complex method (e.g., Runge-Kutta) for better accuracy in these cases.
 
 This simulation and analysis help visualize the Lorentz force’s effects and provide insight into real-world systems that rely on controlling charged particle motion.
-
