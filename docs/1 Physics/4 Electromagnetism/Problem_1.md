@@ -6,7 +6,6 @@ q = -1.6e-19   # Electron charge (Coulombs)
 m = 9.11e-31   # Electron mass (kg)
 B = np.array([0, 0, 1])  # Magnetic field (Tesla) along the z-axis
 E = np.array([0, 0, 0])  # Electric field (V/m), set to zero
-$$
 # Initial conditions
 r = np.array([0.0, 0.0, 0.0])  # Initial position (m)
 v = np.array([1e5, 0.0, 0.0])   # Initial velocity (m/s) along x-axis
@@ -22,8 +21,7 @@ for _ in range(steps):
     a = F / m  # Acceleration (F = ma)
     v = v + a * dt  # Update velocity
     r = r + v * dt  # Update position
-
+    
 # Print results
 print("Final Position:", r)
 print("Final Velocity:", v)
-$$
