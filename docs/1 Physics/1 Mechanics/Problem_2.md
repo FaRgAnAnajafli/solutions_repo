@@ -62,7 +62,6 @@ We will numerically solve the differential equation using the **Runge-Kutta meth
 
 Below is a Python script to simulate and visualize the dynamics of the forced damped pendulum.
 ![![alt text](image-5.png)]
-![alt text](image-6.png)
 ![alt text](image-7.png)
 
 ### 5. Deliverables:
