@@ -177,33 +177,45 @@ import matplotlib.pyplot as plt</p>
 <h1 id="constants">Constants</h1>
 <p>q = -1.6e-19  # Electron charge (Coulombs)
 m = 9.11e-31  # Electron mass (kg)
-B = np.array([0, 0, 1])  # Magnetic field (Tesla)
-E = np.array([0, 0, 0])  # Electric field (Volt/m) - set to zero here</p>
+B = np.array([0, 0, 1])  # Magnetic field (Tesla) along the z-axis
+E = np.array([0, 0, 0])  # Electric field (V/m), set to zero for now</p>
 <h1 id="initial-conditions">Initial conditions</h1>
-<p>r = np.array([0, 0, 0])  # Initial position (meters)
-v = np.array([1e5, 0, 0])  # Initial velocity (m/s)</p>
+<p>r = np.array([0.0, 0.0, 0.0])  # Initial position (meters)
+v = np.array([1e5, 0.0, 0.0])  # Initial velocity (m/s) along x-axis</p>
 <h1 id="time-parameters">Time parameters</h1>
 <p>dt = 1e-12  # Time step (seconds)
-time = np.arange(0, 1e-9, dt)  # Time array (seconds)</p>
-<h1 id="motion-equations">Motion equations</h1>
-<p>positions = []
-for t in time:
-    F_electric = q * E  # Electric force
-    F_magnetic = q * np.cross(v, B)  # Magnetic force (Lorentz force)
-    F_total = F_electric + F_magnetic  # Total force</p>
-<pre><code># Update velocity and position
-a = F_total / m  # Acceleration
-v = v + a * dt  # Update velocity
-r = r + v * dt  # Update position
+T = 1e-9  # Total simulation time (seconds)
+steps = int(T / dt)  # Number of steps</p>
+<h1 id="arrays-to-store-position-data">Arrays to store position data</h1>
+<p>x, y, z = [], [], []</p>
+<h1 id="simulation-loop-using-lorentz-force">Simulation loop using Lorentz force</h1>
+<p>for _ in range(steps):
+    # Lorentz force equation: F = q(E + v × B)
+    F_electric = q * E
+    F_magnetic = q * np.cross(v, B)
+    F_total = F_electric + F_magnetic</p>
+<pre><code># Newton's Second Law: F = m * a  =&gt;  a = F / m
+a = F_total / m
 
-positions.append(r)
+# Update velocity using kinematic equation: v_new = v_old + a * dt
+v = v + a * dt
+
+# Update position using kinematic equation: r_new = r_old + v * dt
+r = r + v * dt
+
+# Store position values for plotting
+x.append(r[0])
+y.append(r[1])
+z.append(r[2])
 </code></pre>
-<h1 id="plot-the-trajectory">Plot the trajectory</h1>
-<p>positions = np.array(positions)
-plt.plot(positions[:, 0], positions[:, 1])
-plt.xlabel('X position (m)')
-plt.ylabel('Y position (m)')
-plt.title('Electron Motion in a Magnetic Field')
+<h1 id="plot-the-trajectory-in-2d">Plot the trajectory in 2D</h1>
+<p>plt.figure(figsize=(8, 6))
+plt.plot(x, y, label="Electron Path")
+plt.xlabel("X Position (m)")
+plt.ylabel("Y Position (m)")
+plt.title("Electron Motion in a Magnetic Field")
+plt.legend()
+plt.grid()
 plt.show()</p>
 </div>
 </div><footer>
