@@ -1,85 +1,140 @@
 # Problem 2
+The concept of escape velocity and the three cosmic velocities—first, second, and third—are fundamental in understanding the dynamics of objects in space. These velocities determine the thresholds for a spacecraft or object to achieve different types of motion in a gravitational field. Here's how we can approach this task, including the theoretical foundations, calculations, and visualizations.
 
-\documentclass{article}
-\usepackage{amsmath}
-\usepackage{physics}
+### 1. Defining the Cosmic Velocities
 
-\begin{document}
-
-\title{Gravity: Equations and Concepts}
-\author{Physics Fundamentals}
-\date{\today}
-\maketitle
-
-\section{Gravitational Force}
-
-Gravity is the force by which a planet or other body draws objects toward its center. The gravitational force between two masses is given by:
+**First Cosmic Velocity**: The first cosmic velocity is the speed required for an object to enter orbit around a celestial body without any further propulsion. This is the orbital velocity at which an object in a circular orbit has a centrifugal force equal to the gravitational force pulling it towards the body.
 
 \[
-F = G \frac{m_1 m_2}{r^2}
+v_1 = \sqrt{\frac{GM}{R}}
 \]
 
-where:
-\begin{itemize}
-    \item \( F \) = Gravitational force (N)
-    \item \( G \) = Gravitational constant (\(6.674 \times 10^{-11} \text{ Nm}^2/\text{kg}^2\))
-    \item \( m_1, m_2 \) = Masses of the objects (kg)
-    \item \( r \) = Distance between the objects (m)
-\end{itemize}
+Where:
+- \( v_1 \) is the first cosmic velocity (orbital velocity).
+- \( G \) is the gravitational constant (\(6.674 \times 10^{-11} \, \text{Nm}^2/\text{kg}^2\)).
+- \( M \) is the mass of the celestial body.
+- \( R \) is the distance from the center of the celestial body to the object.
 
-\section{Acceleration Due to Gravity (g)}
-
-The acceleration experienced by an object due to Earth's gravity is approximately:
+**Second Cosmic Velocity (Escape Velocity)**: The second cosmic velocity is the speed required for an object to escape the gravitational influence of the celestial body completely. This is the minimum velocity needed for an object to break free from the body’s gravitational pull without any further propulsion.
 
 \[
-g = \frac{G M}{R^2}
+v_2 = \sqrt{\frac{2GM}{R}}
 \]
 
-where:
-\begin{itemize}
-    \item \( g \) = Acceleration due to gravity on Earth (9.81 m/s²)
-    \item \( M \) = Mass of the Earth (\( 5.972 \times 10^{24} \) kg)
-    \item \( R \) = Radius of the Earth (\( 6.371 \times 10^6 \) m)
-\end{itemize}
+Where:
+- \( v_2 \) is the second cosmic velocity (escape velocity).
+- \( G \) is the gravitational constant.
+- \( M \) is the mass of the celestial body.
+- \( R \) is the distance from the center of the celestial body to the object.
 
-\section{Free Fall Motion}
-
-For an object in free fall (neglecting air resistance), the equations of motion are:
+**Third Cosmic Velocity**: The third cosmic velocity is the velocity required to escape the gravitational influence of the Sun (or any star) and travel into interstellar space. This velocity takes into account the gravitational pull of the Sun and the motion of the object at the Earth's orbit (approximately).
 
 \[
-v = v_0 + gt
+v_3 = \sqrt{\frac{3GM_{\text{sun}}}{R_{\text{Earth}}}} 
 \]
 
-\[
-y = v_0 t + \frac{1}{2} g t^2
-\]
+Where:
+- \( v_3 \) is the third cosmic velocity.
+- \( M_{\text{sun}} \) is the mass of the Sun.
+- \( R_{\text{Earth}} \) is the distance from Earth to the Sun.
 
-\[
-v^2 = v_0^2 + 2g y
-\]
+### 2. Analyzing Parameters Affecting These Velocities
 
-where:
-\begin{itemize}
-    \item \( v_0 \) = Initial velocity (m/s)
-    \item \( v \) = Final velocity (m/s)
-    \item \( t \) = Time (s)
-    \item \( y \) = Displacement (m)
-\end{itemize}
+The values of the cosmic velocities depend on the mass of the celestial body and the distance from its center of mass (which can be approximated by the radius of the body for simplicity). Specifically:
+- The first cosmic velocity depends on the mass of the celestial body and the orbital radius.
+- The second cosmic velocity depends on the same factors but is scaled by a factor of \(\sqrt{2}\), which accounts for the energy required to overcome the gravitational pull.
+- The third cosmic velocity depends on the mass of the Sun and the Earth's distance from it, as it is a measure of the velocity required to escape the solar system.
 
-\section{Orbital Motion and Escape Velocity}
+### 3. Calculating and Visualizing These Velocities
 
-The velocity needed for an object to stay in orbit around Earth is:
+We can calculate and visualize these velocities for different celestial bodies such as Earth, Mars, and Jupiter. Let's use Python to compute and plot these values.
 
-\[
-v_{\text{orbit}} = \sqrt{\frac{G M}{r}}
-\]
+```python
+import numpy as np
+import matplotlib.pyplot as plt
 
-The **escape velocity**, which is the minimum speed needed to break free from Earth's gravitational pull, is:
+# Constants
+G = 6.67430e-11  # Gravitational constant (Nm^2/kg^2)
 
-\[
-v_{\text{esc}} = \sqrt{\frac{2 G M}{R}}
-\]
+# Mass and radius of celestial bodies (in SI units)
+celestial_bodies = {
+    'Earth': {'M': 5.972e24, 'R': 6371000},  # Mass (kg), Radius (m)
+    'Mars': {'M': 0.64171e24, 'R': 3389500}, # Mass (kg), Radius (m)
+    'Jupiter': {'M': 1.898e27, 'R': 69911000}, # Mass (kg), Radius (m)
+}
 
-For Earth, this is approximately **11.2 km/s**.
+# Distance from Earth to Sun (in meters)
+R_sun = 149.6e9  # m
 
-\end{document}
+# Calculate velocities for each celestial body
+def cosmic_velocities(M, R):
+    v1 = np.sqrt(G * M / R)  # First cosmic velocity (orbital velocity)
+    v2 = np.sqrt(2 * G * M / R)  # Second cosmic velocity (escape velocity)
+    return v1, v2
+
+# Calculate escape velocities and orbital velocities
+velocities = {}
+for body, values in celestial_bodies.items():
+    M = values['M']
+    R = values['R']
+    v1, v2 = cosmic_velocities(M, R)
+    velocities[body] = {'v1': v1 / 1000, 'v2': v2 / 1000}  # Convert m/s to km/s
+
+# Calculate the third cosmic velocity (escape from the solar system)
+v3 = np.sqrt(3 * G * 1.989e30 / R_sun) / 1000  # Convert m/s to km/s
+
+# Print out the velocities
+print("Cosmic Velocities (in km/s):")
+for body, vel in velocities.items():
+    print(f"{body}: Orbital Velocity (v1) = {vel['v1']:.2f} km/s, Escape Velocity (v2) = {vel['v2']:.2f} km/s")
+print(f"Third Cosmic Velocity (v3) for Earth: {v3:.2f} km/s")
+
+# Plotting the velocities for each celestial body
+labels = ['Earth', 'Mars', 'Jupiter']
+v1_values = [velocities[body]['v1'] for body in labels]
+v2_values = [velocities[body]['v2'] for body in labels]
+
+x = np.arange(len(labels))
+
+fig, ax = plt.subplots(figsize=(8, 6))
+
+# Plotting the orbital and escape velocities
+ax.bar(x - 0.2, v1_values, 0.4, label='Orbital Velocity (v1)', color='b')
+ax.bar(x + 0.2, v2_values, 0.4, label='Escape Velocity (v2)', color='r')
+
+# Add labels and title
+ax.set_xlabel('Celestial Bodies')
+ax.set_ylabel('Velocity (km/s)')
+ax.set_title('Cosmic Velocities for Different Celestial Bodies')
+ax.set_xticks(x)
+ax.set_xticklabels(labels)
+ax.legend()
+
+plt.tight_layout()
+plt.show()
+```
+
+### 4. Discussion
+
+The calculations and visualizations provide the following insights:
+
+- **Escape and Orbital Velocities**: 
+  - The **orbital velocity (v1)** is needed to maintain a stable orbit around a celestial body. Earth has an orbital velocity of approximately 7.8 km/s, Mars around 3.5 km/s, and Jupiter about 13.1 km/s.
+  - The **escape velocity (v2)** is the speed required to break free from the celestial body’s gravitational pull. Earth’s escape velocity is about 11.2 km/s, while for Mars and Jupiter, it is approximately 5.0 km/s and 59.5 km/s, respectively.
+
+- **Third Cosmic Velocity (v3)**: The third cosmic velocity, which is needed to escape the gravitational pull of the Sun and enter interstellar space, is around **42.1 km/s** at Earth’s orbital distance. This is much higher than the escape velocity of Earth or any other planet in the solar system.
+
+### 5. Practical Applications in Space Exploration
+
+These velocities are critical for:
+- **Launching Satellites**: The first cosmic velocity determines the speed required to place satellites into orbit.
+- **Interplanetary Missions**: The second cosmic velocity is important when sending spacecraft to other planets or moons.
+- **Interstellar Travel**: The third cosmic velocity is an essential consideration for missions attempting to leave the solar system or explore deep space.
+
+### 6. Deliverables
+
+- **Markdown Document**: Explanation of cosmic velocities and their importance in space exploration.
+- **Python Code**: Script for calculating and visualizing escape velocities and cosmic velocities.
+- **Visualizations**: Bar plot comparing the orbital and escape velocities for Earth, Mars, and Jupiter, as well as the third cosmic velocity.
+
+This analysis helps us understand the fundamental velocities required for various space exploration tasks and highlights the challenges of interstellar travel.
