@@ -101,50 +101,7 @@ Kepler's Third Law has profound implications for astronomy and astrophysics:
 
 Now, let’s implement a computational model to simulate circular orbits and verify the relationship between orbital period and radius. We'll compute the orbital period for a set of orbital radii, assuming the central body is the Sun.
 
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Constants
-G = 6.67430e-11  # Gravitational constant (Nm^2/kg^2)
-M_sun = 1.989e30  # Mass of the Sun (kg)
-
-# Orbital radii (in meters, from the Sun)
-orbital_radii = np.array([0.387e11, 0.723e11, 1.496e11, 2.279e11, 5.204e11, 9.581e11])  # Mercury, Venus, Earth, Mars, Jupiter, Saturn
-# Corresponding orbital periods in seconds (approximately)
-orbital_periods = np.array([87.97 * 24 * 3600, 224.7 * 24 * 3600, 365.25 * 24 * 3600, 687.0 * 24 * 3600, 4332.59 * 24 * 3600, 10759 * 24 * 3600])  # in seconds
-
-# Compute orbital periods based on Kepler's Third Law
-calculated_periods = 2 * np.pi * np.sqrt(orbital_radii**3 / (G * M_sun))
-
-# Convert orbital periods to days for easier comparison
-calculated_periods_days = calculated_periods / (24 * 3600)
-
-# Plotting the orbital periods vs. orbital radius
-plt.figure(figsize=(8, 6))
-
-# Plot the orbital periods (calculated vs. actual)
-plt.plot(orbital_radii, orbital_periods / (24 * 3600), label='Actual Orbital Period (Days)', marker='o', color='b')
-plt.plot(orbital_radii, calculated_periods_days, label='Calculated Orbital Period (Days)', linestyle='--', color='r')
-
-# Log scale for better visualization
-plt.xscale('log')
-plt.yscale('log')
-
-# Labels and title
-plt.xlabel('Orbital Radius (m)')
-plt.ylabel('Orbital Period (Days)')
-plt.title('Orbital Period vs. Orbital Radius for Planets in the Solar System')
-plt.legend()
-
-plt.tight_layout()
-plt.show()
-
-# Print calculated periods
-print("Calculated Orbital Periods (days):")
-for radius, period in zip(orbital_radii, calculated_periods_days):
-    print(f"Orbital Radius: {radius/1e9:.2f} x 10^9 m -> Period: {period:.2f} days")
-```
+![alt text](image-2.png)
 
 ### 5. Discussion
 
