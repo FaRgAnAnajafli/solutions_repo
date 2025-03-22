@@ -171,35 +171,57 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<p>import numpy as np</p>
-<h1 id="constants">Constants</h1>
-<p>q = -1.6e-19   # Electron charge (Coulombs)
-m = 9.11e-31   # Electron mass (kg)
-B = np.array([0, 0, 1])  # Magnetic field (Tesla) along the z-axis
-E = np.array([0, 0, 0])  # Electric field (Volt/m), set to zero</p>
+<p>import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp</p>
+<h1 id="parameters">Parameters</h1>
+<p>g = 9.81  # Gravitational acceleration (m/s^2)
+L = 1.0  # Length of the pendulum (m)
+gamma = 0.1  # Damping coefficient
+F0 = 1.0  # Driving force amplitude
+omega = 1.0  # Driving frequency
+theta0 = 0.5  # Initial angular displacement (rad)
+omega0 = 0.0  # Initial angular velocity (rad/s)</p>
+<h1 id="differential-equation-for-the-forced-damped-pendulum">Differential equation for the forced damped pendulum</h1>
+<p>def pendulum(t, y):
+    theta, omega = y
+    dydt = [omega, -2<em>gamma</em>omega - (g/L)<em>np.sin(theta) + F0</em>np.cos(omega*t)]
+    return dydt</p>
+<h1 id="time-span-for-the-simulation">Time span for the simulation</h1>
+<p>t_span = (0, 50)  # 50 seconds
+t_eval = np.linspace(*t_span, 1000)</p>
 <h1 id="initial-conditions">Initial conditions</h1>
-<p>r = np.array([0.0, 0.0, 0.0])  # Initial position (meters)
-v = np.array([1e5, 0.0, 0.0])   # Initial velocity (m/s) along x-axis</p>
-<h1 id="time-parameters">Time parameters</h1>
-<p>dt = 1e-12    # Time step (seconds)
-T = 1e-9      # Total simulation time (seconds)
-steps = int(T / dt)  # Number of steps (total time / time step)</p>
-<h1 id="simulation-loop-implementing-newtons-second-law">Simulation loop (implementing Newton's Second Law)</h1>
-<p>for _ in range(steps):
-    # Lorentz force (F = q * (E + v x B))
-    F = q * (E + np.cross(v, B))  </p>
-<pre><code># Acceleration (a = F / m)
-a = F / m
-
-# Update velocity (v(t+dt) = v(t) + a * dt)
-v = v + a * dt
-
-# Update position (r(t+dt) = r(t) + v * dt)
-r = r + v * dt
-</code></pre>
-<h1 id="print-results">Print results</h1>
-<p>print("Final Position:", r)
-print("Final Velocity:", v)</p>
+<p>y0 = [theta0, omega0]</p>
+<h1 id="solve-the-differential-equation-using-runge-kutta-method">Solve the differential equation using Runge-Kutta method</h1>
+<p>solution = solve_ivp(pendulum, t_span, y0, t_eval=t_eval)</p>
+<h1 id="extract-results">Extract results</h1>
+<p>theta = solution.y[0]
+omega = solution.y[1]
+time = solution.t</p>
+<h1 id="visualization-of-the-motion">Visualization of the motion</h1>
+<p>plt.figure(figsize=(12, 6))
+plt.subplot(1, 2, 1)
+plt.plot(time, theta)
+plt.title('Angular Displacement vs Time')
+plt.xlabel('Time (s)')
+plt.ylabel('Angular Displacement (rad)')</p>
+<h1 id="phase-space-plot-theta-vs-omega">Phase space plot (theta vs omega)</h1>
+<p>plt.subplot(1, 2, 2)
+plt.plot(theta, omega)
+plt.title('Phase Space: Theta vs Omega')
+plt.xlabel('Angular Displacement (rad)')
+plt.ylabel('Angular Velocity (rad/s)')</p>
+<p>plt.tight_layout()
+plt.show()</p>
+<h1 id="poincare-section-plot-at-each-time-step-where-the-velocity-is-zero">Poincare Section (plot at each time step where the velocity is zero)</h1>
+<p>poincare_theta = theta[omega == 0]</p>
+<p>plt.figure(figsize=(8, 6))
+plt.plot(poincare_theta, 'o', label='Poincare Section')
+plt.title('Poincare Section')
+plt.xlabel('Theta (rad)')
+plt.ylabel('Poincare Points')
+plt.legend()
+plt.show()</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
