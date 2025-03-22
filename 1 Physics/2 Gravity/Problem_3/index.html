@@ -222,60 +222,7 @@ F = \frac{GMm}{r^2}
 - <span class="arithmatex">\( r \)</span> is the distance from the center of the Earth to the payload.</p>
 <p>Given the initial position and velocity, we can numerically integrate these equations to track the payload’s position over time.</p>
 <h4 id="python-implementation">Python Implementation:</h4>
-<pre><code class="language-python">import numpy as np
-import matplotlib.pyplot as plt
-
-# Constants
-G = 6.67430e-11  # Gravitational constant (Nm^2/kg^2)
-M_earth = 5.972e24  # Mass of Earth (kg)
-R_earth = 6.371e6  # Radius of Earth (m)
-
-# Initial conditions
-initial_position = np.array([R_earth + 500e3, 0])  # Payload starts 500 km above Earth's surface (in meters)
-initial_velocity = np.array([0, 7.8e3])  # Initial velocity (m/s) for low Earth orbit (circular orbit velocity)
-initial_state = np.concatenate((initial_position, initial_velocity))
-
-# Time settings
-dt = 10  # Time step (seconds)
-t_max = 12000  # Total simulation time (seconds)
-num_steps = int(t_max / dt)
-
-# Function to compute gravitational force and acceleration
-def compute_acceleration(position):
-    r = np.linalg.norm(position)
-    acceleration = -G * M_earth * position / r**3
-    return acceleration
-
-# Initialize arrays to store the trajectory data
-positions = np.zeros((num_steps, 2))
-velocities = np.zeros((num_steps, 2))
-
-# Set initial conditions
-positions[0] = initial_position
-velocities[0] = initial_velocity
-
-# Numerical integration using Euler method
-for i in range(1, num_steps):
-    acceleration = compute_acceleration(positions[i-1])
-    velocities[i] = velocities[i-1] + acceleration * dt
-    positions[i] = positions[i-1] + velocities[i] * dt
-
-# Plotting the trajectory
-plt.figure(figsize=(8, 6))
-plt.plot(positions[:, 0], positions[:, 1], label="Trajectory")
-plt.scatter(0, 0, color='orange', label="Earth", s=200)  # Earth at the origin
-plt.title('Trajectory of a Freely Released Payload Near Earth')
-plt.xlabel('X Position (m)')
-plt.ylabel('Y Position (m)')
-plt.legend()
-plt.grid(True)
-plt.axis('equal')
-plt.show()
-
-# Output the final position and velocity of the payload
-print(f"Final position (m): {positions[-1]}")
-print(f"Final velocity (m/s): {velocities[-1]}")
-</code></pre>
+<p><img alt="alt text" src="../image-5.png"/></p>
 <h3 id="3-analysis-of-results">3. <strong>Analysis of Results</strong></h3>
 <ul>
 <li><strong>Parabolic Trajectory</strong>: If the initial velocity is exactly equal to the escape velocity (approximately <span class="arithmatex">\( 11.2 \, \text{km/s} \)</span> near Earth’s surface), the trajectory will be parabolic, and the payload will eventually escape Earth’s gravitational pull.</li>
