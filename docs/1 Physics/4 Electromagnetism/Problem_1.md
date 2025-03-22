@@ -2,7 +2,7 @@
 
 ## Problem 1
 
-```python
+$```python
 import numpy as np
 
 # Constants
@@ -30,4 +30,4 @@ for _ in range(steps):
 # Print results
 print("Final Position:", r)
 print("Final Velocity:", v)
-```
+```$
