@@ -58,6 +58,18 @@
 </li>
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 2</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#1-defining-the-cosmic-velocities">1. Defining the Cosmic Velocities</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#2-analyzing-parameters-affecting-these-velocities">2. Analyzing Parameters Affecting These Velocities</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#3-calculating-and-visualizing-these-velocities">3. Calculating and Visualizing These Velocities</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#4-discussion">4. Discussion</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#5-practical-applications-in-space-exploration">5. Practical Applications in Space Exploration</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#6-deliverables">6. Deliverables</a>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Problem_3/">Problem 3</a>
@@ -172,66 +184,128 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-2">Problem 2</h1>
-<p>\documentclass{article}
-\usepackage{amsmath}
-\usepackage{physics}</p>
-<p>\begin{document}</p>
-<p>\title{Gravity: Equations and Concepts}
-\author{Physics Fundamentals}
-\date{\today}
-\maketitle</p>
-<p>\section{Gravitational Force}</p>
-<p>Gravity is the force by which a planet or other body draws objects toward its center. The gravitational force between two masses is given by:</p>
+<p>The concept of escape velocity and the three cosmic velocities—first, second, and third—are fundamental in understanding the dynamics of objects in space. These velocities determine the thresholds for a spacecraft or object to achieve different types of motion in a gravitational field. Here's how we can approach this task, including the theoretical foundations, calculations, and visualizations.</p>
+<h3 id="1-defining-the-cosmic-velocities">1. Defining the Cosmic Velocities</h3>
+<p><strong>First Cosmic Velocity</strong>: The first cosmic velocity is the speed required for an object to enter orbit around a celestial body without any further propulsion. This is the orbital velocity at which an object in a circular orbit has a centrifugal force equal to the gravitational force pulling it towards the body.</p>
 <div class="arithmatex">\[
-F = G \frac{m_1 m_2}{r^2}
+v_1 = \sqrt{\frac{GM}{R}}
 \]</div>
-<p>where:
-\begin{itemize}
-    \item <span class="arithmatex">\( F \)</span> = Gravitational force (N)
-    \item <span class="arithmatex">\( G \)</span> = Gravitational constant (<span class="arithmatex">\(6.674 \times 10^{-11} \text{ Nm}^2/\text{kg}^2\)</span>)
-    \item <span class="arithmatex">\( m_1, m_2 \)</span> = Masses of the objects (kg)
-    \item <span class="arithmatex">\( r \)</span> = Distance between the objects (m)
-\end{itemize}</p>
-<p>\section{Acceleration Due to Gravity (g)}</p>
-<p>The acceleration experienced by an object due to Earth's gravity is approximately:</p>
+<p>Where:
+- <span class="arithmatex">\( v_1 \)</span> is the first cosmic velocity (orbital velocity).
+- <span class="arithmatex">\( G \)</span> is the gravitational constant (<span class="arithmatex">\(6.674 \times 10^{-11} \, \text{Nm}^2/\text{kg}^2\)</span>).
+- <span class="arithmatex">\( M \)</span> is the mass of the celestial body.
+- <span class="arithmatex">\( R \)</span> is the distance from the center of the celestial body to the object.</p>
+<p><strong>Second Cosmic Velocity (Escape Velocity)</strong>: The second cosmic velocity is the speed required for an object to escape the gravitational influence of the celestial body completely. This is the minimum velocity needed for an object to break free from the body’s gravitational pull without any further propulsion.</p>
 <div class="arithmatex">\[
-g = \frac{G M}{R^2}
+v_2 = \sqrt{\frac{2GM}{R}}
 \]</div>
-<p>where:
-\begin{itemize}
-    \item <span class="arithmatex">\( g \)</span> = Acceleration due to gravity on Earth (9.81 m/s²)
-    \item <span class="arithmatex">\( M \)</span> = Mass of the Earth (<span class="arithmatex">\( 5.972 \times 10^{24} \)</span> kg)
-    \item <span class="arithmatex">\( R \)</span> = Radius of the Earth (<span class="arithmatex">\( 6.371 \times 10^6 \)</span> m)
-\end{itemize}</p>
-<p>\section{Free Fall Motion}</p>
-<p>For an object in free fall (neglecting air resistance), the equations of motion are:</p>
+<p>Where:
+- <span class="arithmatex">\( v_2 \)</span> is the second cosmic velocity (escape velocity).
+- <span class="arithmatex">\( G \)</span> is the gravitational constant.
+- <span class="arithmatex">\( M \)</span> is the mass of the celestial body.
+- <span class="arithmatex">\( R \)</span> is the distance from the center of the celestial body to the object.</p>
+<p><strong>Third Cosmic Velocity</strong>: The third cosmic velocity is the velocity required to escape the gravitational influence of the Sun (or any star) and travel into interstellar space. This velocity takes into account the gravitational pull of the Sun and the motion of the object at the Earth's orbit (approximately).</p>
 <div class="arithmatex">\[
-v = v_0 + gt
+v_3 = \sqrt{\frac{3GM_{\text{sun}}}{R_{\text{Earth}}}} 
 \]</div>
-<div class="arithmatex">\[
-y = v_0 t + \frac{1}{2} g t^2
-\]</div>
-<div class="arithmatex">\[
-v^2 = v_0^2 + 2g y
-\]</div>
-<p>where:
-\begin{itemize}
-    \item <span class="arithmatex">\( v_0 \)</span> = Initial velocity (m/s)
-    \item <span class="arithmatex">\( v \)</span> = Final velocity (m/s)
-    \item <span class="arithmatex">\( t \)</span> = Time (s)
-    \item <span class="arithmatex">\( y \)</span> = Displacement (m)
-\end{itemize}</p>
-<p>\section{Orbital Motion and Escape Velocity}</p>
-<p>The velocity needed for an object to stay in orbit around Earth is:</p>
-<div class="arithmatex">\[
-v_{\text{orbit}} = \sqrt{\frac{G M}{r}}
-\]</div>
-<p>The <strong>escape velocity</strong>, which is the minimum speed needed to break free from Earth's gravitational pull, is:</p>
-<div class="arithmatex">\[
-v_{\text{esc}} = \sqrt{\frac{2 G M}{R}}
-\]</div>
-<p>For Earth, this is approximately <strong>11.2 km/s</strong>.</p>
-<p>\end{document}</p>
+<p>Where:
+- <span class="arithmatex">\( v_3 \)</span> is the third cosmic velocity.
+- <span class="arithmatex">\( M_{\text{sun}} \)</span> is the mass of the Sun.
+- <span class="arithmatex">\( R_{\text{Earth}} \)</span> is the distance from Earth to the Sun.</p>
+<h3 id="2-analyzing-parameters-affecting-these-velocities">2. Analyzing Parameters Affecting These Velocities</h3>
+<p>The values of the cosmic velocities depend on the mass of the celestial body and the distance from its center of mass (which can be approximated by the radius of the body for simplicity). Specifically:
+- The first cosmic velocity depends on the mass of the celestial body and the orbital radius.
+- The second cosmic velocity depends on the same factors but is scaled by a factor of <span class="arithmatex">\(\sqrt{2}\)</span>, which accounts for the energy required to overcome the gravitational pull.
+- The third cosmic velocity depends on the mass of the Sun and the Earth's distance from it, as it is a measure of the velocity required to escape the solar system.</p>
+<h3 id="3-calculating-and-visualizing-these-velocities">3. Calculating and Visualizing These Velocities</h3>
+<p>We can calculate and visualize these velocities for different celestial bodies such as Earth, Mars, and Jupiter. Let's use Python to compute and plot these values.</p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+G = 6.67430e-11  # Gravitational constant (Nm^2/kg^2)
+
+# Mass and radius of celestial bodies (in SI units)
+celestial_bodies = {
+    'Earth': {'M': 5.972e24, 'R': 6371000},  # Mass (kg), Radius (m)
+    'Mars': {'M': 0.64171e24, 'R': 3389500}, # Mass (kg), Radius (m)
+    'Jupiter': {'M': 1.898e27, 'R': 69911000}, # Mass (kg), Radius (m)
+}
+
+# Distance from Earth to Sun (in meters)
+R_sun = 149.6e9  # m
+
+# Calculate velocities for each celestial body
+def cosmic_velocities(M, R):
+    v1 = np.sqrt(G * M / R)  # First cosmic velocity (orbital velocity)
+    v2 = np.sqrt(2 * G * M / R)  # Second cosmic velocity (escape velocity)
+    return v1, v2
+
+# Calculate escape velocities and orbital velocities
+velocities = {}
+for body, values in celestial_bodies.items():
+    M = values['M']
+    R = values['R']
+    v1, v2 = cosmic_velocities(M, R)
+    velocities[body] = {'v1': v1 / 1000, 'v2': v2 / 1000}  # Convert m/s to km/s
+
+# Calculate the third cosmic velocity (escape from the solar system)
+v3 = np.sqrt(3 * G * 1.989e30 / R_sun) / 1000  # Convert m/s to km/s
+
+# Print out the velocities
+print("Cosmic Velocities (in km/s):")
+for body, vel in velocities.items():
+    print(f"{body}: Orbital Velocity (v1) = {vel['v1']:.2f} km/s, Escape Velocity (v2) = {vel['v2']:.2f} km/s")
+print(f"Third Cosmic Velocity (v3) for Earth: {v3:.2f} km/s")
+
+# Plotting the velocities for each celestial body
+labels = ['Earth', 'Mars', 'Jupiter']
+v1_values = [velocities[body]['v1'] for body in labels]
+v2_values = [velocities[body]['v2'] for body in labels]
+
+x = np.arange(len(labels))
+
+fig, ax = plt.subplots(figsize=(8, 6))
+
+# Plotting the orbital and escape velocities
+ax.bar(x - 0.2, v1_values, 0.4, label='Orbital Velocity (v1)', color='b')
+ax.bar(x + 0.2, v2_values, 0.4, label='Escape Velocity (v2)', color='r')
+
+# Add labels and title
+ax.set_xlabel('Celestial Bodies')
+ax.set_ylabel('Velocity (km/s)')
+ax.set_title('Cosmic Velocities for Different Celestial Bodies')
+ax.set_xticks(x)
+ax.set_xticklabels(labels)
+ax.legend()
+
+plt.tight_layout()
+plt.show()
+</code></pre>
+<h3 id="4-discussion">4. Discussion</h3>
+<p>The calculations and visualizations provide the following insights:</p>
+<ul>
+<li><strong>Escape and Orbital Velocities</strong>: </li>
+<li>The <strong>orbital velocity (v1)</strong> is needed to maintain a stable orbit around a celestial body. Earth has an orbital velocity of approximately 7.8 km/s, Mars around 3.5 km/s, and Jupiter about 13.1 km/s.</li>
+<li>
+<p>The <strong>escape velocity (v2)</strong> is the speed required to break free from the celestial body’s gravitational pull. Earth’s escape velocity is about 11.2 km/s, while for Mars and Jupiter, it is approximately 5.0 km/s and 59.5 km/s, respectively.</p>
+</li>
+<li>
+<p><strong>Third Cosmic Velocity (v3)</strong>: The third cosmic velocity, which is needed to escape the gravitational pull of the Sun and enter interstellar space, is around <strong>42.1 km/s</strong> at Earth’s orbital distance. This is much higher than the escape velocity of Earth or any other planet in the solar system.</p>
+</li>
+</ul>
+<h3 id="5-practical-applications-in-space-exploration">5. Practical Applications in Space Exploration</h3>
+<p>These velocities are critical for:
+- <strong>Launching Satellites</strong>: The first cosmic velocity determines the speed required to place satellites into orbit.
+- <strong>Interplanetary Missions</strong>: The second cosmic velocity is important when sending spacecraft to other planets or moons.
+- <strong>Interstellar Travel</strong>: The third cosmic velocity is an essential consideration for missions attempting to leave the solar system or explore deep space.</p>
+<h3 id="6-deliverables">6. Deliverables</h3>
+<ul>
+<li><strong>Markdown Document</strong>: Explanation of cosmic velocities and their importance in space exploration.</li>
+<li><strong>Python Code</strong>: Script for calculating and visualizing escape velocities and cosmic velocities.</li>
+<li><strong>Visualizations</strong>: Bar plot comparing the orbital and escape velocities for Earth, Mars, and Jupiter, as well as the third cosmic velocity.</li>
+</ul>
+<p>This analysis helps us understand the fundamental velocities required for various space exploration tasks and highlights the challenges of interstellar travel.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
