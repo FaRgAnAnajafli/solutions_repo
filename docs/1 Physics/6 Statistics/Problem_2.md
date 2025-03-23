@@ -40,37 +40,7 @@ We’ll create a plot showing the points inside and outside the circle to visual
 
 #### **4. Python Implementation:**
 
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Number of random points
-num_points = 10000
-
-# Generate random points in the square
-x = np.random.uniform(-1, 1, num_points)
-y = np.random.uniform(-1, 1, num_points)
-
-# Calculate the distance from the origin (0, 0) to check if the point is inside the circle
-inside_circle = x**2 + y**2 <= 1
-
-# Estimate Pi using the ratio of points inside the circle
-pi_estimate = 4 * np.sum(inside_circle) / num_points
-
-# Visualization of points inside and outside the circle
-plt.figure(figsize=(6, 6))
-plt.scatter(x[inside_circle], y[inside_circle], color='blue', s=1, label='Inside Circle')
-plt.scatter(x[~inside_circle], y[~inside_circle], color='red', s=1, label='Outside Circle')
-plt.gca().set_aspect('equal', adjustable='box')
-plt.title(f"Monte Carlo Estimation of Pi\nEstimated Pi = {pi_estimate:.4f}")
-plt.xlabel("x")
-plt.ylabel("y")
-plt.legend()
-plt.show()
-
-# Print estimated Pi
-print(f"Estimated Pi = {pi_estimate:.4f}")
-```
+![alt text](image-15.png)
 
 #### **Analysis:**
 - As the number of points increases, the estimate of π should converge to the true value.
@@ -115,59 +85,7 @@ To simulate the dropping of a needle, we:
 We will create a plot showing the positions of the needles, indicating whether they cross the lines.
 
 #### **4. Python Implementation:**
-
-```python
-import math
-import random
-import matplotlib.pyplot as plt
-
-# Parameters for Buffon's Needle
-needle_length = 1
-line_spacing = 1
-num_drops = 10000
-
-# Function to simulate a single needle drop
-def needle_crosses_line():
-    # Randomly choose the angle (theta) between 0 and pi/2
-    theta = random.uniform(0, math.pi / 2)
-    # Randomly choose the distance (d) from the center of the needle to the nearest line
-    d = random.uniform(0, line_spacing / 2)
-    
-    # Check if the needle crosses a line (condition: d <= (needle_length/2) * sin(theta))
-    return d <= (needle_length / 2) * math.sin(theta)
-
-# Simulate the needle drops and count the number of crosses
-num_crosses = sum(needle_crosses_line() for _ in range(num_drops))
-
-# Estimate Pi using the formula derived from Buffon's Needle
-pi_estimate_buffon = (2 * needle_length * num_drops) / (line_spacing * num_crosses)
-
-# Visualization of the needle positions
-plt.figure(figsize=(6, 6))
-for _ in range(num_drops):
-    # Random angle and distance
-    theta = random.uniform(0, math.pi / 2)
-    d = random.uniform(0, line_spacing / 2)
-    # Check if it crosses a line
-    if d <= (needle_length / 2) * math.sin(theta):
-        color = 'r'  # Crosses a line
-    else:
-        color = 'b'  # Does not cross a line
-    
-    # Plot the needle
-    x = [d, d + needle_length * math.cos(theta)]
-    y = [line_spacing / 2, line_spacing / 2 + needle_length * math.sin(theta)]
-    plt.plot(x, y, color=color, lw=2)
-
-plt.axhline(y=line_spacing / 2, color='k', linestyle='--', lw=1)
-plt.title(f"Buffon's Needle Simulation\nEstimated Pi = {pi_estimate_buffon:.4f}")
-plt.xlabel("x")
-plt.ylabel("y")
-plt.show()
-
-# Print estimated Pi
-print(f"Estimated Pi (Buffon's Needle) = {pi_estimate_buffon:.4f}")
-```
+![alt text](image-16.png)
 
 #### **Analysis:**
 - Similar to the circle-based method, the accuracy improves with more needle drops.
