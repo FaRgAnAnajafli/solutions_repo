@@ -87,15 +87,13 @@ Thus, the uncertainty in \( g \) becomes:
 \Delta g = \sqrt{\left( \frac{4\pi^2}{T^2} \Delta L \right)^2 + \left( -\frac{8\pi^2 L}{T^3} \Delta T \right)^2}
 \]
 
----
 
 ### **5. Example Python Code**
 
 Here is an example Python code to carry out the calculations and plot the results:
 
-![alt text](image.png)
+![alt text](image-1.png)
 
----
 
 ### **6. Discussion and Analysis**
 
