@@ -39,15 +39,6 @@ The CLT is foundational for statistical inference, and we’ll discuss its pract
 
 Let’s implement this step by step using Python and libraries such as `numpy`, `matplotlib`, and `seaborn`.
 
-#### Step 1: Importing Libraries
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-```
-
-#### Step 2: Simulating the Population Distributions
 
 We'll generate large datasets for each of the distributions.
 
@@ -64,34 +55,15 @@ exponential_population = np.random.exponential(scale=1, size=population_size)
 binomial_population = np.random.binomial(n=10, p=0.5, size=population_size)
 ```
 
-#### Step 3: Sampling from the Population
-
 Now we will define a function to sample from these populations, compute the sample means, and repeat the process multiple times.
 
-```python
-def simulate_sampling_distribution(population, sample_size, num_samples=1000):
-    sample_means = []
-    for _ in range(num_samples):
-        sample = np.random.choice(population, size=sample_size, replace=False)
-        sample_mean = np.mean(sample)
-        sample_means.append(sample_mean)
-    return sample_means
-```
 
 #### Step 4: Visualizing the Sampling Distributions
 
 For each population distribution, we will take samples of different sizes (e.g., 5, 10, 30, 50) and plot the histograms of the sample means.
 
-```python
-def plot_sampling_distribution(population, sample_sizes, num_samples=1000):
-    for sample_size in sample_sizes:
-        sample_means = simulate_sampling_distribution(population, sample_size, num_samples)
-        plt.figure(figsize=(8, 6))
-        sns.histplot(sample_means, kde=True, bins=30)
-        plt.title(f'Sampling Distribution of Sample Mean (Sample Size={sample_size})')
-        plt.xlabel('Sample Mean')
-        plt.ylabel('Frequency')
-        plt.show()
+![alt text](image.png)
+![alt text](image-1.png)
 
 # Define sample sizes to explore
 sample_sizes = [5, 10, 30, 50]
