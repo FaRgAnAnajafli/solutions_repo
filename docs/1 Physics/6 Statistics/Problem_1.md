@@ -69,11 +69,11 @@ For each population distribution, we will take samples of different sizes (e.g.,
 ![alt text](image-4.png)
 ![alt text](image-5.png)
 ![alt text](image-6.png)
-![alt text](image-7.png)
 ![alt text](image-8.png)
 ![alt text](image-9.png)
 ![alt text](image-12.png)
 ![alt text](image-13.png)
+![alt text](image-14.png)
 
 # Define sample sizes to explore
 sample_sizes = [5, 10, 30, 50]
