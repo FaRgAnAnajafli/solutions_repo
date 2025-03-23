@@ -78,6 +78,30 @@
 <ul class="current">
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#equivalent-resistance-using-graph-theory">Equivalent Resistance Using Graph Theory</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#motivation">Motivation:</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#approach">Approach:</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#option-1-simplified-task-algorithm-description">Option 1: Simplified Task – Algorithm Description</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#algorithm-overview">Algorithm Overview:</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#pseudocode">Pseudocode:</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#explanation">Explanation:</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#option-2-advanced-task-full-implementation">Option 2: Advanced Task – Full Implementation</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#python-code-implementation">Python Code Implementation:</a>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -172,6 +196,104 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h3 id="equivalent-resistance-using-graph-theory">Equivalent Resistance Using Graph Theory</h3>
+<h4 id="motivation">Motivation:</h4>
+<p>Calculating the equivalent resistance of a complex electrical circuit can be challenging when using traditional methods like series and parallel resistor rules. In circuits with many components, this process can become cumbersome. However, by representing electrical circuits as graphs, where nodes correspond to junctions and edges represent resistors, graph theory provides an efficient and systematic way to calculate the equivalent resistance of even the most intricate networks.</p>
+<h4 id="approach">Approach:</h4>
+<p>In this approach, the circuit is modeled as a graph:
+- <strong>Nodes</strong>: Represent junctions in the circuit.
+- <strong>Edges</strong>: Represent resistors between those junctions, with edge weights equal to the resistance values.</p>
+<h3 id="option-1-simplified-task-algorithm-description">Option 1: Simplified Task – Algorithm Description</h3>
+<p>The core idea of using graph theory for calculating equivalent resistance is to reduce the graph step-by-step, simplifying series and parallel resistor connections iteratively until only one equivalent resistance remains. Let's break down the steps and describe the algorithm in detail.</p>
+<h4 id="algorithm-overview">Algorithm Overview:</h4>
+<ol>
+<li><strong>Graph Representation</strong>:</li>
+<li>The circuit is represented as a graph <span class="arithmatex">\( G = (V, E) \)</span>, where <span class="arithmatex">\( V \)</span> are the nodes (junctions) and <span class="arithmatex">\( E \)</span> are the edges (resistors).</li>
+<li>
+<p>Each edge <span class="arithmatex">\( (u, v) \in E \)</span> has a weight corresponding to the resistance <span class="arithmatex">\( R \)</span> between nodes <span class="arithmatex">\( u \)</span> and <span class="arithmatex">\( v \)</span>.</p>
+</li>
+<li>
+<p><strong>Identify Series and Parallel Connections</strong>:</p>
+</li>
+<li><strong>Series Connection</strong>: Two resistors are in series if they are connected end-to-end, meaning there is no other node between them.<ul>
+<li>Equivalent resistance for two resistors <span class="arithmatex">\( R_1 \)</span> and <span class="arithmatex">\( R_2 \)</span> in series: 
+   [
+   R_{\text{eq}} = R_1 + R_2
+   ]</li>
+</ul>
+</li>
+<li>
+<p><strong>Parallel Connection</strong>: Two resistors are in parallel if they share both the same nodes.</p>
+<ul>
+<li>Equivalent resistance for two resistors <span class="arithmatex">\( R_1 \)</span> and <span class="arithmatex">\( R_2 \)</span> in parallel:
+   [
+   \frac{1}{R_{\text{eq}}} = \frac{1}{R_1} + \frac{1}{R_2}
+   ]</li>
+</ul>
+</li>
+<li>
+<p><strong>Graph Reduction</strong>:</p>
+</li>
+<li>The graph is iteratively reduced by identifying pairs of nodes connected by series or parallel resistors.</li>
+<li><strong>Series Reduction</strong>: If two nodes are connected by a series of resistors, replace them with a single equivalent resistor whose resistance is the sum of the individual resistances.</li>
+<li>
+<p><strong>Parallel Reduction</strong>: If two nodes are connected by resistors in parallel, replace them with a single equivalent resistor using the parallel formula.</p>
+</li>
+<li>
+<p><strong>Handle Nested Configurations</strong>:</p>
+</li>
+<li>If a reduction leads to a new series or parallel configuration (i.e., the new equivalent resistor becomes part of a larger network), repeat the process.</li>
+<li>Continue simplifying the graph until only one node remains, representing the equivalent resistance of the entire circuit.</li>
+</ol>
+<h4 id="pseudocode">Pseudocode:</h4>
+<pre><code class="language-plaintext">1. Initialize the circuit graph G(V, E), where V is the set of nodes and E is the set of edges with resistance values.
+2. While the graph has more than one node:
+   a. Search for series connections in the graph.
+      - For each pair of nodes (u, v) connected by resistors in series:
+         - Replace the series connection with an equivalent resistor whose resistance is the sum of individual resistances.
+   b. Search for parallel connections in the graph.
+      - For each pair of nodes (u, v) connected by resistors in parallel:
+         - Replace the parallel connection with an equivalent resistor calculated using the parallel formula.
+   c. If new series or parallel combinations are formed, repeat step 2.
+3. Once only one node remains, return the equivalent resistance.
+</code></pre>
+<h4 id="explanation">Explanation:</h4>
+<ul>
+<li>The algorithm starts by iterating over the graph to find series or parallel resistor configurations.</li>
+<li>After reducing the graph step-by-step, it continues simplifying until a single equivalent resistor is calculated.</li>
+<li>The algorithm ensures that both simple and nested resistor networks are handled efficiently by applying reductions iteratively.</li>
+</ul>
+<h3 id="option-2-advanced-task-full-implementation">Option 2: Advanced Task – Full Implementation</h3>
+<p>In this more advanced task, we will implement the algorithm described above in Python using the <strong>NetworkX</strong> library, which allows easy manipulation of graphs. The full implementation handles arbitrary resistor configurations, including nested series and parallel combinations.</p>
+<h4 id="python-code-implementation">Python Code Implementation:</h4>
+<p>```python
+import networkx as nx</p>
+<p>def calculate_equivalent_resistance(G):
+    """
+    Calculates the equivalent resistance of a circuit represented as a graph using series and parallel reductions.
+    """
+    while len(G.nodes) &gt; 1:
+        # Look for series connections (two resistors in series)
+        for edge in list(G.edges(data=True)):
+            u, v, data = edge
+            R = data['resistance']
+            # Check if u and v are connected only by this resistor (series connection)
+            if len(list(G.neighbors(u))) == 2 and len(list(G.neighbors(v))) == 2:
+                # Combine u and v into a new node with the equivalent resistance
+                new_node = u
+                G.add_edge(u, v, resistance=R)
+                G.remove_edge(u, v)</p>
+<pre><code>            # Recalculate the resistance after combining the two resistors
+            G[u][v]['resistance'] = R  # Update resistance
+
+    # Look for parallel connections (two resistors in parallel)
+    for edge in list(G.edges(data=True)):
+        u, v, data = edge
+        R = data['resistance']
+        if u and v connected directly in parallel:
+</code></pre>
+<p>G</p>
+<p>display of</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
