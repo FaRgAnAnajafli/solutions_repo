@@ -80,27 +80,21 @@
 <ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="#option-1-simplified-task-algorithm-description">Option 1: Simplified Task – Algorithm Description</a>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#steps-to-calculate-equivalent-resistance">Steps to Calculate Equivalent Resistance:</a>
+<li class="toctree-l4"><a class="reference internal" href="#algorithm-overview">Algorithm Overview:</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#step-by-step-process">Step-by-Step Process:</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#pseudocode">Pseudocode:</a>
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#pseudocode">Pseudocode:</a>
+<li class="toctree-l3"><a class="reference internal" href="#explanation-of-the-algorithm">Explanation of the Algorithm:</a>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#detailed-explanation">Detailed Explanation:</a>
+<li class="toctree-l4"><a class="reference internal" href="#efficiency-considerations">Efficiency Considerations:</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#potential-improvements">Potential Improvements:</a>
 </li>
 </ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#example-walkthrough">Example Walkthrough:</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#example-1-simple-series-combination">Example 1: Simple Series Combination</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#example-2-parallel-combination">Example 2: Parallel Combination</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#option-2-advanced-task-full-implementation">Option 2: Advanced Task – Full Implementation</a>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#efficiency-and-potential-improvements">Efficiency and Potential Improvements:</a>
 </li>
 </ul>
 </li>
@@ -196,139 +190,127 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
-<p>To tackle the problem of calculating equivalent resistance using graph theory, we can break down the solution into two parts: the algorithm description (Option 1) and the implementation (Option 2). Here, I’ll focus on the algorithm and its pseudocode, as well as how to handle complex configurations.</p>
+<p>This task involves calculating the equivalent resistance of an electrical circuit using graph theory. In graph-theoretical terms, a circuit is represented as a graph where each resistor is an edge, and each node represents a junction in the circuit.</p>
+<p>For the simplified task, I will describe the algorithm in pseudocode, focusing on detecting series and parallel combinations of resistors in a graph and iteratively simplifying the graph until a single equivalent resistance is obtained.</p>
 <h3 id="option-1-simplified-task-algorithm-description">Option 1: Simplified Task – Algorithm Description</h3>
-<p>We aim to compute the equivalent resistance of a network of resistors using graph theory. The key idea is to represent the circuit as a graph where:</p>
-<ul>
-<li><strong>Nodes (vertices)</strong> represent junctions where wires meet.</li>
-<li><strong>Edges</strong> represent resistors between two nodes, with weights corresponding to the resistance values.</li>
-</ul>
-<p>The problem then boils down to iteratively reducing the graph by simplifying series and parallel resistor combinations until only one equivalent resistance remains.</p>
-<h4 id="steps-to-calculate-equivalent-resistance">Steps to Calculate Equivalent Resistance:</h4>
+<h4 id="algorithm-overview">Algorithm Overview:</h4>
 <ol>
+<li><strong>Identify Series and Parallel Connections</strong>: </li>
+<li><strong>Series connection</strong>: Resistors in series are connected end-to-end. The total resistance of resistors in series is the sum of individual resistances.</li>
 <li>
-<p><strong>Identify Series and Parallel Connections</strong>:</p>
-<ul>
-<li><strong>Series Connection</strong>: Resistors in series share the same node and can be added directly to give their equivalent resistance:
-  [
-  R_{\text{eq}} = R_1 + R_2 + \dots + R_n
-  ]</li>
-<li><strong>Parallel Connection</strong>: Resistors in parallel connect to the same pair of nodes, and their equivalent resistance can be computed by:
-  [
-  \frac{1}{R_{\text{eq}}} = \frac{1}{R_1} + \frac{1}{R_2} + \dots + \frac{1}{R_n}
-  ]</li>
-</ul>
+<p><strong>Parallel connection</strong>: Resistors in parallel share both endpoints, and the total resistance is found using the reciprocal sum formula: 
+     [
+     \frac{1}{R_{\text{eq}}} = \sum \frac{1}{R_i}
+     ]</p>
 </li>
 <li>
-<p><strong>Graph Representation</strong>:</p>
-<ul>
-<li>Use a graph where each resistor is represented as an edge with its weight being the resistance value.</li>
-<li>Nodes represent junctions where resistors meet.</li>
-</ul>
+<p><strong>Iteratively Reduce the Graph</strong>:</p>
 </li>
 <li>
-<p><strong>Simplify the Graph</strong>:</p>
-<ul>
-<li>Look for connected components that are in series or parallel.</li>
-<li>In a <strong>series</strong> configuration, collapse the resistors into a single equivalent resistor and update the graph.</li>
-<li>In a <strong>parallel</strong> configuration, similarly collapse the resistors into a single equivalent resistance.</li>
-</ul>
+<p>We need to find and reduce series and parallel resistors until only one equivalent resistance remains.</p>
 </li>
 <li>
-<p><strong>Handle Nested Configurations</strong>:</p>
-<ul>
-<li>The algorithm should be recursive or iterative. When reducing a graph, if the resulting subgraph still contains series or parallel combinations, further simplify it.</li>
-<li>For more complex graphs (like those with cycles), use graph traversal (such as Depth-First Search or BFS) to find connected components that can be simplified.</li>
-</ul>
+<p><strong>Handling Nested Combinations</strong>:</p>
 </li>
-<li>
-<p><strong>Final Step</strong>: When the graph is reduced to a single node, the value of the resistance of that node is the equivalent resistance of the entire network.</p>
-</li>
+<li>In cases where the circuit has both series and parallel connections combined in complex configurations, the algorithm needs to recursively simplify parts of the graph.</li>
 </ol>
-<h3 id="pseudocode">Pseudocode:</h3>
-<pre><code class="language-plaintext">Algorithm: Calculate Equivalent Resistance
+<h4 id="step-by-step-process">Step-by-Step Process:</h4>
+<ol>
+<li><strong>Initialize the Graph</strong>: </li>
+<li>
+<p>Represent the circuit as a graph where each edge has a weight corresponding to the resistor value.</p>
+</li>
+<li>
+<p><strong>Detect and Simplify Series Connections</strong>:</p>
+</li>
+<li>
+<p>For each pair of nodes connected by a single edge (resistor), check if there are additional series connections. If so, sum the resistances and reduce the graph.</p>
+</li>
+<li>
+<p><strong>Detect and Simplify Parallel Connections</strong>:</p>
+</li>
+<li>
+<p>For each set of nodes with multiple edges between them (parallel resistors), calculate the equivalent resistance using the reciprocal sum formula, and then reduce the graph.</p>
+</li>
+<li>
+<p><strong>Repeat Until One Equivalent Resistance is Left</strong>:</p>
+</li>
+<li>Keep applying the series and parallel reduction rules iteratively to simplify the graph until a single equivalent resistance remains.</li>
+</ol>
+<h4 id="pseudocode">Pseudocode:</h4>
+<pre><code class="language-python"># Function to calculate equivalent resistance
+def calculate_equivalent_resistance(circuit_graph):
+    # Initialize the graph (resistances as edge weights)
+    while len(circuit_graph.nodes) &gt; 1:  # Repeat until only one node remains
+        # Step 1: Detect and simplify series connections
+        for each pair of connected nodes (u, v) in circuit_graph:
+            if is_series_connection(u, v, circuit_graph):
+                # Calculate series resistance
+                R_series = sum_resistances(u, v, circuit_graph)
+                # Simplify the graph by replacing series resistors with equivalent resistance
+                simplify_series(u, v, R_series, circuit_graph)
 
-Input: Graph G with nodes representing junctions and edges representing resistors
+        # Step 2: Detect and simplify parallel connections
+        for each set of parallel resistors (u, v) in circuit_graph:
+            if is_parallel_connection(u, v, circuit_graph):
+                # Calculate parallel resistance
+                R_parallel = calculate_parallel_resistance(u, v, circuit_graph)
+                # Simplify the graph by replacing parallel resistors with equivalent resistance
+                simplify_parallel(u, v, R_parallel, circuit_graph)
 
-1. Initialize a stack to hold nodes for traversal.
-2. While the graph has more than one node:
-   a. Identify series and parallel resistor combinations:
-      - For each node, check its neighbors and classify the connections as series or parallel.
-      - For series: Collapse the resistors into one by summing the resistances.
-      - For parallel: Collapse the resistors into one by calculating the equivalent resistance of the parallel combination.
-   b. Update the graph by removing the simplified resistors and adding new edges for the equivalent resistance.
-3. Repeat until the graph is reduced to one node.
-4. Output the equivalent resistance of the final node.
+    # The final remaining node has the equivalent resistance
+    return circuit_graph.get_node_resistance()
+
+# Helper function to detect series connections
+def is_series_connection(u, v, graph):
+    # Check if the nodes are in series (connected in a linear fashion)
+    return len(graph[u]) == 1 and len(graph[v]) == 1
+
+# Helper function to sum resistances in series
+def sum_resistances(u, v, graph):
+    return graph[u][v] + graph[v][u]
+
+# Helper function to simplify series connections
+def simplify_series(u, v, R, graph):
+    graph.remove_edge(u, v)
+    graph.add_edge(u, v, R)
+
+# Helper function to detect parallel connections
+def is_parallel_connection(u, v, graph):
+    # Check if the nodes have multiple edges (parallel resistors)
+    return len(graph[u][v]) &gt; 1
+
+# Helper function to calculate parallel resistance
+def calculate_parallel_resistance(u, v, graph):
+    total_inverse = sum(1/graph[u][v] for edge in graph[u][v])
+    return 1 / total_inverse
+
+# Helper function to simplify parallel connections
+def simplify_parallel(u, v, R, graph):
+    # Replace the parallel resistors with the equivalent resistance
+    graph.remove_edges(u, v)
+    graph.add_edge(u, v, R)
 </code></pre>
-<h4 id="detailed-explanation">Detailed Explanation:</h4>
+<h3 id="explanation-of-the-algorithm">Explanation of the Algorithm:</h3>
 <ol>
-<li><strong>Identifying Series Connections</strong>:</li>
-<li>Check each node to identify resistors that are in series (i.e., connected end to end).</li>
-<li>
-<p>For these resistors, sum the resistance values.</p>
-</li>
-<li>
-<p><strong>Identifying Parallel Connections</strong>:</p>
-</li>
-<li>Check each pair of nodes to find resistors connected in parallel.</li>
-<li>
-<p>Apply the parallel resistance formula to reduce them to a single equivalent resistor.</p>
-</li>
-<li>
-<p><strong>Recursive Simplification</strong>:</p>
-</li>
-<li>
-<p>After each reduction step, the graph might still contain further series or parallel connections. The algorithm continues until no further reductions are possible.</p>
-</li>
-<li>
-<p><strong>Graph Traversal</strong>:</p>
-</li>
-<li>Depth-First Search (DFS) or Breadth-First Search (BFS) can be used to traverse the graph and identify components that can be simplified.</li>
+<li><strong>Graph Representation</strong>: The circuit is represented as a graph where nodes represent junctions and edges represent resistors.</li>
+<li><strong>Series and Parallel Detection</strong>: The algorithm first detects series and parallel connections by checking the structure of the graph:</li>
+<li><strong>Series</strong>: Nodes are connected in sequence.</li>
+<li><strong>Parallel</strong>: Nodes share both endpoints with multiple resistors between them.</li>
+<li><strong>Iterative Reduction</strong>: It iterates through the graph, simplifying series and parallel connections one by one, until only one equivalent resistance remains.</li>
+<li><strong>Handling Nested Combinations</strong>: By repeatedly simplifying series and parallel combinations, the algorithm can handle complex, nested circuit configurations.</li>
 </ol>
-<h3 id="example-walkthrough">Example Walkthrough:</h3>
-<h4 id="example-1-simple-series-combination">Example 1: Simple Series Combination</h4>
-<p>Consider a simple circuit with three resistors in series: <span class="arithmatex">\( R_1 = 10 \, \Omega \)</span>, <span class="arithmatex">\( R_2 = 20 \, \Omega \)</span>, and <span class="arithmatex">\( R_3 = 30 \, \Omega \)</span>.</p>
-<ol>
-<li>Start with the graph <span class="arithmatex">\( G \)</span> consisting of nodes <span class="arithmatex">\( A, B, C \)</span>, and edges <span class="arithmatex">\( (A, B), (B, C), (C, D) \)</span>, representing resistors.</li>
-<li>Identify that all resistors are in series.</li>
-<li>Apply the series formula:
-   [
-   R_{\text{eq}} = 10 + 20 + 30 = 60 \, \Omega
-   ]</li>
-<li>The graph is reduced to one node with an equivalent resistance of 60 Ω.</li>
-</ol>
-<h4 id="example-2-parallel-combination">Example 2: Parallel Combination</h4>
-<p>Consider a parallel configuration with two resistors: <span class="arithmatex">\( R_1 = 10 \, \Omega \)</span>, <span class="arithmatex">\( R_2 = 20 \, \Omega \)</span>.</p>
-<ol>
-<li>Start with the graph <span class="arithmatex">\( G \)</span> consisting of nodes <span class="arithmatex">\( A, B \)</span>, and an edge <span class="arithmatex">\( (A, B) \)</span> representing the two resistors.</li>
-<li>Apply the parallel resistance formula:
-   [
-   \frac{1}{R_{\text{eq}}} = \frac{1}{10} + \frac{1}{20} = \frac{3}{20}
-   ]
-   [
-   R_{\text{eq}} = \frac{20}{3} \approx 6.67 \, \Omega
-   ]</li>
-<li>The graph is simplified to one node with the equivalent resistance of 6.67 Ω.</li>
-</ol>
-<h3 id="option-2-advanced-task-full-implementation">Option 2: Advanced Task – Full Implementation</h3>
-<p>If you were to implement this algorithm in code (e.g., using Python and the NetworkX library), you could leverage graph traversal methods and built-in graph manipulation functions to help simplify the circuit. The implementation would involve:</p>
-<ol>
-<li>Constructing the graph using nodes and edges.</li>
-<li>Iteratively detecting and reducing series and parallel resistor combinations.</li>
-<li>Ensuring that complex configurations (including cycles) are handled properly.</li>
-</ol>
-<h3 id="efficiency-and-potential-improvements">Efficiency and Potential Improvements:</h3>
+<h4 id="efficiency-considerations">Efficiency Considerations:</h4>
 <ul>
-<li>
-<p><strong>Time Complexity</strong>: The time complexity depends on the number of nodes and edges in the graph. Simplifying a resistor network requires finding connected components and reducing them, which may involve graph traversal techniques. Thus, the complexity is generally <span class="arithmatex">\( O(V + E) \)</span> per iteration (where <span class="arithmatex">\( V \)</span> is the number of nodes and <span class="arithmatex">\( E \)</span> is the number of edges), and the number of iterations will depend on how quickly the graph simplifies.</p>
-</li>
-<li>
-<p><strong>Improvements</strong>:</p>
-</li>
-<li>Implementing better heuristics for recognizing series and parallel combinations to reduce redundant calculations.</li>
-<li>Using more sophisticated graph traversal algorithms (e.g., DFS or BFS with memoization) to handle cycles and complex structures efficiently.</li>
+<li><strong>Time Complexity</strong>: The algorithm's time complexity depends on the size of the graph and the number of series and parallel reductions required. Each reduction typically takes linear time, and the total number of reductions is proportional to the number of edges and nodes in the graph.</li>
+<li><strong>Graph Traversal</strong>: Depth-first search (DFS) or breadth-first search (BFS) can be used to explore the graph for series and parallel connections efficiently.</li>
 </ul>
-<p>This algorithm provides a systematic and efficient approach for calculating equivalent resistance in even the most complex resistor networks.</p>
+<h4 id="potential-improvements">Potential Improvements:</h4>
+<ul>
+<li><strong>Cycle Detection</strong>: In complex graphs with cycles, detecting and simplifying cycles could further optimize the solution.</li>
+<li><strong>Graph Libraries</strong>: Using libraries like <code>networkx</code> in Python for graph manipulation can simplify handling of graph-related operations.</li>
+</ul>
+<p>This algorithm provides a structured way to analyze and simplify electrical circuits using graph theory, offering an efficient approach to calculating equivalent resistance even in complex configurations.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
