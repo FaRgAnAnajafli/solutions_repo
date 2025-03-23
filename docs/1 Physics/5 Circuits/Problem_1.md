@@ -93,8 +93,3 @@ def calculate_equivalent_resistance(G):
             u, v, data = edge
             R = data['resistance']
             if u and v connected directly in parallel:
-
-                
-   G
-                 
-   display of
