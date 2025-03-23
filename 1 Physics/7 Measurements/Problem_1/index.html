@@ -287,55 +287,7 @@ g = \frac{4\pi^2 L}{T^2}
 <hr/>
 <h3 id="5-example-python-code"><strong>5. Example Python Code</strong></h3>
 <p>Here is an example Python code to carry out the calculations and plot the results:</p>
-<pre><code class="language-python">import numpy as np
-import matplotlib.pyplot as plt
-
-# Given values
-L = 1.0  # Length of the pendulum in meters (example)
-n = 10  # Number of measurements
-T_measurements = np.array([20.1, 20.2, 19.9, 20.0, 20.3, 20.1, 20.0, 19.8, 20.2, 19.9])  # Times for 10 oscillations (in seconds)
-
-# Calculate the mean and standard deviation
-T_mean = np.mean(T_measurements)
-T_std = np.std(T_measurements)
-
-# Calculate the period for one oscillation
-T = T_mean / n
-
-# Uncertainty in the mean time
-delta_T_mean = T_std / np.sqrt(n)
-
-# Calculate g
-g = (4 * np.pi**2 * L) / (T**2)
-
-# Uncertainty in g (propagating uncertainty)
-delta_L = 0.0005  # Uncertainty in length (example: 0.5 mm)
-delta_T = delta_T_mean / n  # Uncertainty in period (adjusted for 1 oscillation)
-delta_g = np.sqrt((4 * np.pi**2 / T**2 * delta_L)**2 + (-8 * np.pi**2 * L / T**3 * delta_T)**2)
-
-# Print results
-print(f"Estimated g = {g:.4f} m/s²")
-print(f"Uncertainty in g = {delta_g:.4f} m/s²")
-
-# Tabulated data
-data = {
-    'Measurement': T_measurements,
-    'Mean Time (T_mean)': T_mean,
-    'Standard Deviation (σ_T)': T_std,
-    'Period (T)': T,
-    'Gravitational Acceleration (g)': g,
-    'Uncertainty in g (Δg)': delta_g
-}
-
-# Plotting the data
-plt.hist(T_measurements, bins=10, alpha=0.7, label="Time Measurements")
-plt.axvline(T_mean, color='red', linestyle='dashed', linewidth=2, label=f"Mean Time = {T_mean:.2f} s")
-plt.xlabel('Time (s)')
-plt.ylabel('Frequency')
-plt.title('Histogram of Pendulum Time Measurements')
-plt.legend()
-plt.show()
-</code></pre>
+<p><img alt="alt text" src="../image.png"/></p>
 <hr/>
 <h3 id="6-discussion-and-analysis"><strong>6. Discussion and Analysis</strong></h3>
 <h4 id="1-compare-measured-g-with-standard-value"><strong>1. Compare Measured <span class="arithmatex">\( g \)</span> with Standard Value</strong></h4>
