@@ -111,33 +111,7 @@ In real-world scenarios, projectile motion is often more complicated due to fact
 
 Here’s a simple Python script to simulate the projectile motion and plot the range as a function of the angle of projection:
 
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Constants
-g = 9.81  # Gravitational acceleration (m/s^2)
-v0 = 20.0  # Initial velocity (m/s)
-
-# Function to calculate range
-def calculate_range(v0, angle_deg):
-    angle_rad = np.radians(angle_deg)  # Convert angle to radians
-    return (v0**2 * np.sin(2 * angle_rad)) / g
-
-# Generate angles from 0 to 90 degrees
-angles = np.linspace(0, 90, 100)
-ranges = [calculate_range(v0, angle) for angle in angles]
-
-# Plot the results
-plt.figure(figsize=(8, 6))
-plt.plot(angles, ranges, label=f'v0 = {v0} m/s', color='b')
-plt.title('Range of a Projectile as a Function of Launch Angle')
-plt.xlabel('Launch Angle (degrees)')
-plt.ylabel('Range (m)')
-plt.grid(True)
-plt.legend()
-plt.show()
-```
+![alt text](image-8.png)
 
 #### 4.2 Graphical Representation
 
