@@ -98,23 +98,9 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#python-code-implementation">Python Code Implementation</a>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#step-1-importing-libraries">Step 1: Importing Libraries</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#step-2-simulating-the-population-distributions">Step 2: Simulating the Population Distributions</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#step-3-sampling-from-the-population">Step 3: Sampling from the Population</a>
-</li>
 <li class="toctree-l4"><a class="reference internal" href="#step-4-visualizing-the-sampling-distributions">Step 4: Visualizing the Sampling Distributions</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#step-5-analysis-and-discussion">Step 5: Analysis and Discussion</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#step-6-reflection-on-practical-applications">Step 6: Reflection on Practical Applications</a>
-</li>
 </ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#deliverables">Deliverables</a>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusion</a>
 </li>
 </ul>
 </li>
@@ -231,12 +217,6 @@
 <hr/>
 <h3 id="python-code-implementation"><strong>Python Code Implementation</strong></h3>
 <p>Let’s implement this step by step using Python and libraries such as <code>numpy</code>, <code>matplotlib</code>, and <code>seaborn</code>.</p>
-<h4 id="step-1-importing-libraries">Step 1: Importing Libraries</h4>
-<pre><code class="language-python">import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-</code></pre>
-<h4 id="step-2-simulating-the-population-distributions">Step 2: Simulating the Population Distributions</h4>
 <p>We'll generate large datasets for each of the distributions.</p>
 <pre><code class="language-python"># Set random seed for reproducibility
 np.random.seed(42)
@@ -249,41 +229,21 @@ uniform_population = np.random.uniform(low=0, high=1, size=population_size)
 exponential_population = np.random.exponential(scale=1, size=population_size)
 binomial_population = np.random.binomial(n=10, p=0.5, size=population_size)
 </code></pre>
-<h4 id="step-3-sampling-from-the-population">Step 3: Sampling from the Population</h4>
 <p>Now we will define a function to sample from these populations, compute the sample means, and repeat the process multiple times.</p>
-<pre><code class="language-python">def simulate_sampling_distribution(population, sample_size, num_samples=1000):
-    sample_means = []
-    for _ in range(num_samples):
-        sample = np.random.choice(population, size=sample_size, replace=False)
-        sample_mean = np.mean(sample)
-        sample_means.append(sample_mean)
-    return sample_means
-</code></pre>
 <h4 id="step-4-visualizing-the-sampling-distributions">Step 4: Visualizing the Sampling Distributions</h4>
 <p>For each population distribution, we will take samples of different sizes (e.g., 5, 10, 30, 50) and plot the histograms of the sample means.</p>
-<pre><code class="language-python">def plot_sampling_distribution(population, sample_sizes, num_samples=1000):
-    for sample_size in sample_sizes:
-        sample_means = simulate_sampling_distribution(population, sample_size, num_samples)
-        plt.figure(figsize=(8, 6))
-        sns.histplot(sample_means, kde=True, bins=30)
-        plt.title(f'Sampling Distribution of Sample Mean (Sample Size={sample_size})')
-        plt.xlabel('Sample Mean')
-        plt.ylabel('Frequency')
-        plt.show()
-
-# Define sample sizes to explore
-sample_sizes = [5, 10, 30, 50]
-
-# Plot for each population
-print("Uniform Distribution")
-plot_sampling_distribution(uniform_population, sample_sizes)
-
-print("Exponential Distribution")
-plot_sampling_distribution(exponential_population, sample_sizes)
-
-print("Binomial Distribution")
+<p><img alt="alt text" src="../image.png"/>
+<img alt="alt text" src="../image-1.png"/></p>
+<h1 id="define-sample-sizes-to-explore">Define sample sizes to explore</h1>
+<p>sample_sizes = [5, 10, 30, 50]</p>
+<h1 id="plot-for-each-population">Plot for each population</h1>
+<p>print("Uniform Distribution")
+plot_sampling_distribution(uniform_population, sample_sizes)</p>
+<p>print("Exponential Distribution")
+plot_sampling_distribution(exponential_population, sample_sizes)</p>
+<p>print("Binomial Distribution")
 plot_sampling_distribution(binomial_population, sample_sizes)
-</code></pre>
+```</p>
 <h4 id="step-5-analysis-and-discussion">Step 5: Analysis and Discussion</h4>
 <ul>
 <li><strong>Sample Mean Convergence:</strong> As you increase the sample size, the distribution of sample means will gradually approach a normal distribution, as predicted by the Central Limit Theorem.</li>
