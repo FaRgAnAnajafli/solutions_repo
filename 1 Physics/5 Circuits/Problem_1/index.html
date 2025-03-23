@@ -78,19 +78,21 @@
 <ul class="current">
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
 <ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="#algorithm-for-calculating-equivalent-resistance-using-graph-theory">Algorithm for Calculating Equivalent Resistance Using Graph Theory</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#step-by-step-explanation">Step-by-Step Explanation:</a>
+<li class="toctree-l3"><a class="reference internal" href="#1-basic-graph-representation-of-a-circuit">1. Basic Graph Representation of a Circuit:</a>
 </li>
-</ul>
+<li class="toctree-l3"><a class="reference internal" href="#2-series-connection-in-graph-representation">2. Series Connection in Graph Representation:</a>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#pseudocode-for-the-algorithm">Pseudocode for the Algorithm:</a>
+<li class="toctree-l3"><a class="reference internal" href="#3-parallel-connection-in-graph-representation">3. Parallel Connection in Graph Representation:</a>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#explanation-of-the-algorithm">Explanation of the Algorithm:</a>
+<li class="toctree-l3"><a class="reference internal" href="#4-complex-circuit-with-mixed-series-and-parallel-connections">4. Complex Circuit with Mixed Series and Parallel Connections:</a>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#complexity-and-potential-improvements">Complexity and Potential Improvements:</a>
+<li class="toctree-l3"><a class="reference internal" href="#5-graph-with-loops-cycles">5. Graph with Loops (Cycles):</a>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#test-examples">Test Examples:</a>
+<li class="toctree-l3"><a class="reference internal" href="#6-weighted-adjacency-matrix-representation">6. Weighted Adjacency Matrix Representation:</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#7-adjacency-list-representation">7. Adjacency List Representation:</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusion:</a>
 </li>
 </ul>
 </li>
@@ -186,168 +188,177 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
-<p>This is an interesting and useful problem in circuit analysis using graph theory! Below, I will outline the pseudocode for the simplified task (Option 1), which focuses on the algorithm for calculating equivalent resistance using graph theory. I’ll describe the algorithm in steps and provide an explanation of how it works with nested combinations.</p>
-<hr/>
-<h3 id="algorithm-for-calculating-equivalent-resistance-using-graph-theory"><strong>Algorithm for Calculating Equivalent Resistance Using Graph Theory</strong></h3>
-<h4 id="step-by-step-explanation"><strong>Step-by-Step Explanation</strong>:</h4>
-<ol>
-<li>
-<p><strong>Represent the Circuit as a Graph</strong>:</p>
-<ul>
-<li>Each junction (node) in the circuit is a vertex in the graph.</li>
-<li>Each resistor is an edge connecting two nodes, with the resistance value as the weight of the edge.</li>
-</ul>
-</li>
-<li>
-<p><strong>Identify Series and Parallel Connections</strong>:</p>
-<ul>
-<li><strong>Series connection</strong>: If two resistors are connected in series, their resistances simply add up. In graph terms, this is a straight path with two nodes connected by edges. We can combine these two edges into one edge with the sum of their resistances.</li>
-<li><strong>Parallel connection</strong>: If two resistors are connected in parallel, their combined resistance can be found using the formula:<br/>
-  [
-  R_{eq} = \left(\frac{1}{R_1} + \frac{1}{R_2}\right)^{-1}
-  ]
-  In graph terms, this is when two nodes are connected to the same node and have multiple edges between them, representing parallel resistors.</li>
-</ul>
-</li>
-<li>
-<p><strong>Iterative Reduction</strong>:</p>
-<ul>
-<li>The algorithm iteratively simplifies the graph by detecting series and parallel resistors and reducing them to a single equivalent resistance until only one edge remains in the graph.</li>
-</ul>
-</li>
-<li>
-<p><strong>Nested Combinations</strong>:</p>
-<ul>
-<li>If the circuit contains nested combinations of resistors in series and parallel, the algorithm will handle this by recursively reducing each section of the graph. This is done by identifying smaller subgraphs and applying series/parallel reduction rules locally.</li>
-</ul>
-</li>
-</ol>
-<hr/>
-<h3 id="pseudocode-for-the-algorithm"><strong>Pseudocode for the Algorithm</strong>:</h3>
-<pre><code class="language-python">def calculate_equivalent_resistance(graph):
-    """
-    This function calculates the equivalent resistance of a circuit represented as a graph.
-
-    graph: A dictionary where keys are nodes, and values are lists of tuples representing edges.
-           Each edge is a tuple (neighboring_node, resistance_value).
-
-    Returns the equivalent resistance of the entire circuit.
-    """
-
-    while not is_simplified(graph):
-        # Step 1: Check for series connections and simplify them
-        for node in graph:
-            neighbors = graph[node]
-            for i in range(len(neighbors)):
-                # Look for a series connection (two edges in sequence)
-                if is_series(neighbors[i], neighbors[i+1]):
-                    combined_resistance = combine_series(neighbors[i], neighbors[i+1])
-                    simplify_graph(graph, node, i, combined_resistance)
-
-        # Step 2: Check for parallel connections and simplify them
-        for node in graph:
-            neighbors = graph[node]
-            for i in range(len(neighbors)):
-                if is_parallel(neighbors[i], neighbors[i+1]):
-                    combined_resistance = combine_parallel(neighbors[i], neighbors[i+1])
-                    simplify_graph(graph, node, i, combined_resistance)
-
-    # Once the graph is simplified to a single node, return the resistance
-    return graph[only_node_left]
-
-def is_simplified(graph):
-    # Check if the graph has been reduced to a single equivalent resistance
-    return len(graph) == 1
-
-def is_series(resistor1, resistor2):
-    # Check if two resistors are in series (connected sequentially)
-    return True  # Implement logic based on the structure of the graph
-
-def is_parallel(resistor1, resistor2):
-    # Check if two resistors are in parallel (sharing common nodes)
-    return True  # Implement logic based on the structure of the graph
-
-def combine_series(resistor1, resistor2):
-    # Combine resistors in series (add their resistances)
-    return resistor1 + resistor2
-
-def combine_parallel(resistor1, resistor2):
-    # Combine resistors in parallel using the formula:
-    return (1 / (1 / resistor1 + 1 / resistor2))
-
-def simplify_graph(graph, node, index, new_resistance):
-    # Modify the graph to replace a series or parallel combination with a single equivalent resistor
-    pass  # Implement graph modification logic here
+<p>Certainly! In the context of electrical circuits, graph theory allows you to represent circuits in various ways that reflect different aspects of the system. Below are several ways to represent circuits and their connections in graph theory.</p>
+<h3 id="1-basic-graph-representation-of-a-circuit">1. <strong>Basic Graph Representation of a Circuit:</strong></h3>
+<p>In the simplest form, a circuit can be represented as an <strong>undirected graph</strong>, where:
+- <strong>Nodes (Vertices)</strong> represent junctions (or connection points) in the circuit.
+- <strong>Edges</strong> represent the resistors, with the edge weights corresponding to the resistance values of the resistors.</p>
+<p>Here is an example of a simple circuit:</p>
+<pre><code>     R1
+  A ----- B
+     |  
+     R2
+     |
+     C ----- D
+         R3
 </code></pre>
-<h3 id="explanation-of-the-algorithm"><strong>Explanation of the Algorithm</strong>:</h3>
-<ol>
-<li>
-<p><strong>Graph Representation</strong>:</p>
+<p><strong>Graph Representation:</strong></p>
 <ul>
-<li>The graph is represented as a dictionary where each node (junction) has a list of edges. Each edge connects the node to a neighboring node and has a resistance value.</li>
+<li><strong>Nodes</strong>: A, B, C, D (representing junctions).</li>
+<li><strong>Edges</strong>: (A, B), (B, C), (C, D) (representing the resistors R1, R2, and R3, respectively).</li>
 </ul>
-</li>
-<li>
-<p><strong>Iteration</strong>:</p>
+<p>This could be represented in Python with <code>networkx</code> as follows:</p>
+<pre><code class="language-python">import networkx as nx
+
+# Create an empty graph
+G = nx.Graph()
+
+# Add edges with resistance values as weights
+G.add_edge('A', 'B', resistance=10)  # Resistor R1 between A and B
+G.add_edge('B', 'C', resistance=20)  # Resistor R2 between B and C
+G.add_edge('C', 'D', resistance=30)  # Resistor R3 between C and D
+</code></pre>
+<h3 id="2-series-connection-in-graph-representation">2. <strong>Series Connection in Graph Representation:</strong></h3>
+<p>In a series connection, resistors are connected end-to-end, meaning the nodes only have one neighbor each along the path.</p>
+<p>For example:</p>
+<pre><code>     R1       R2       R3
+  A ----- B ----- C ----- D
+</code></pre>
+<p>Here, <strong>A-B</strong>, <strong>B-C</strong>, and <strong>C-D</strong> are series connections. To compute the equivalent resistance, the resistances simply add up.</p>
 <ul>
-<li>The algorithm iterates until the graph is reduced to a single node, representing the equivalent resistance. During each iteration:</li>
-<li><strong>Series Connections</strong>: Identified by checking if there are two resistors in sequence (two edges connected to the same node).</li>
-<li><strong>Parallel Connections</strong>: Identified by checking if two resistors are connected in parallel (two edges sharing the same starting or ending node).</li>
+<li>The equivalent resistance for resistors in series:
+  [
+  R_{\text{eq}} = R_1 + R_2 + R_3
+  ]</li>
 </ul>
-</li>
-<li>
-<p><strong>Simplification</strong>:</p>
+<h3 id="3-parallel-connection-in-graph-representation">3. <strong>Parallel Connection in Graph Representation:</strong></h3>
+<p>In a parallel connection, resistors are connected in such a way that they share the same two nodes. For example:</p>
+<pre><code>     R1
+  A ----- B
+     |   |
+     R2  R3
+     |   |
+  C ----- D
+</code></pre>
+<p>Here, <strong>R1</strong> is in parallel with the combination of <strong>R2</strong> and <strong>R3</strong>.</p>
 <ul>
-<li>Series and parallel connections are simplified by combining the resistances using their respective formulas (addition for series, inverse sum for parallel).</li>
+<li>The equivalent resistance for parallel resistors <span class="arithmatex">\( R_1 \)</span>, <span class="arithmatex">\( R_2 \)</span>, and <span class="arithmatex">\( R_3 \)</span> is:
+  [
+  \frac{1}{R_{\text{eq}}} = \frac{1}{R_1} + \frac{1}{R_2} + \frac{1}{R_3}
+  ]</li>
 </ul>
-</li>
-<li>
-<p><strong>Nested Combinations</strong>:</p>
+<p>This could be represented as follows in Python:</p>
+<pre><code class="language-python"># Parallel resistors between A and B, and another parallel group between C and D
+G.add_edge('A', 'B', resistance=10)  # R1 between A and B
+G.add_edge('B', 'C', resistance=5)   # R2 between B and C
+G.add_edge('C', 'D', resistance=15)  # R3 between C and D
+</code></pre>
+<h3 id="4-complex-circuit-with-mixed-series-and-parallel-connections">4. <strong>Complex Circuit with Mixed Series and Parallel Connections:</strong></h3>
+<p>In more complex circuits, we can have mixed connections—both series and parallel resistors. For example:</p>
+<pre><code>     R1         R2
+  A ----- B ----- C ----- D
+        |            |
+        R3           R4
+        |            |
+        E ----- F ----- G
+           R5        R6
+</code></pre>
+<p>Here, <strong>R1</strong>, <strong>R2</strong>, and <strong>R3</strong> are in series, and <strong>R4</strong> and <strong>R5</strong> are in parallel.</p>
 <ul>
-<li>The algorithm will handle nested combinations by simplifying each detected series or parallel pair as it encounters them, ensuring that even complex circuits are reduced step by step.</li>
+<li>The strategy is to reduce the series and parallel parts separately and then simplify the entire graph step by step.</li>
 </ul>
-</li>
-</ol>
-<h3 id="complexity-and-potential-improvements"><strong>Complexity and Potential Improvements</strong>:</h3>
-<ul>
-<li>
-<p><strong>Time Complexity</strong>: The complexity depends on the number of nodes (junctions) and edges (resistors) in the graph. Each iteration reduces the graph, so the algorithm will simplify a graph in approximately <span class="arithmatex">\( O(n) \)</span> steps, where <span class="arithmatex">\( n \)</span> is the number of edges in the graph.</p>
-</li>
-<li>
-<p><strong>Improvements</strong>:</p>
-<ul>
-<li>Use depth-first search (DFS) or breadth-first search (BFS) to efficiently find series and parallel combinations.</li>
-<li>Consider optimizing the algorithm to detect more complex resistor arrangements like bridges or loops, which may require additional graph traversal techniques.</li>
-</ul>
-</li>
-</ul>
-<hr/>
-<h3 id="test-examples"><strong>Test Examples</strong>:</h3>
-<ol>
-<li>
-<p><strong>Simple Series Connection</strong>:</p>
-<ul>
-<li>Circuit: R1, R2 in series.</li>
-<li>Result: <span class="arithmatex">\( R_{eq} = R1 + R2 \)</span>.</li>
-</ul>
-</li>
-<li>
-<p><strong>Simple Parallel Connection</strong>:</p>
-<ul>
-<li>Circuit: R1, R2 in parallel.</li>
-<li>Result: <span class="arithmatex">\( R_{eq} = \frac{1}{\left(\frac{1}{R1} + \frac{1}{R2}\right)} \)</span>.</li>
-</ul>
-</li>
-<li>
-<p><strong>Complex Nested Circuit</strong>:</p>
-<ul>
-<li>Circuit: R1 in series with (R2 in parallel with R3).</li>
-<li>Result: Combine R2 and R3 in parallel first, then add R1 in series.</li>
-</ul>
-</li>
-</ol>
-<hr/>
-<p>This pseudocode offers a basic structure for implementing the algorithm, and you can extend it to handle more complex circuits with advanced graph manipulations. If you choose to implement this in Python or another language, you can use graph libraries like <code>networkx</code> to simplify the process of managing nodes and edges.</p>
+<p><strong>Graph Representation:</strong></p>
+<pre><code class="language-python"># Adding more edges to represent this complex circuit
+G.add_edge('A', 'B', resistance=10)  # R1 between A and B
+G.add_edge('B', 'C', resistance=20)  # R2 between B and C
+G.add_edge('C', 'D', resistance=30)  # R3 between C and D
+G.add_edge('B', 'E', resistance=40)  # R4 between B and E
+G.add_edge('E', 'F', resistance=50)  # R5 between E and F
+G.add_edge('F', 'G', resistance=60)  # R6 between F and G
+</code></pre>
+<h3 id="5-graph-with-loops-cycles">5. <strong>Graph with Loops (Cycles):</strong></h3>
+<p>When circuits contain loops or cycles, we need to account for those as well in graph theory. A cycle is a closed loop where the current can circulate.</p>
+<p>For example, a looped circuit:</p>
+<pre><code>     R1
+  A ----- B
+   |     |
+  R2     R3
+   |     |
+  C ----- D
+</code></pre>
+<p>Here, <strong>R1</strong> is in series with the combination of <strong>R2</strong> and <strong>R3</strong> (which are in parallel).</p>
+<p><strong>Graph Representation:</strong></p>
+<pre><code class="language-python"># Adding resistors in a loop (cyclic connections)
+G.add_edge('A', 'B', resistance=10)  # R1 between A and B
+G.add_edge('B', 'D', resistance=20)  # R2 between B and D
+G.add_edge('D', 'C', resistance=30)  # R3 between D and C
+G.add_edge('C', 'A', resistance=40)  # R4 between C and A (closing the loop)
+</code></pre>
+<h3 id="6-weighted-adjacency-matrix-representation">6. <strong>Weighted Adjacency Matrix Representation:</strong></h3>
+<p>Another way to represent a circuit is by using an <strong>adjacency matrix</strong>, where the elements represent the resistance between nodes. For example, if the matrix entry at position <span class="arithmatex">\( (i, j) \)</span> is the resistance between node <span class="arithmatex">\( i \)</span> and node <span class="arithmatex">\( j \)</span>, then:</p>
+<p>For a circuit with 4 nodes (A, B, C, D) and resistors as edges:</p>
+<pre><code>  A ---- B
+  |      |
+  R1     R2
+  |      |
+  C ---- D
+     R3
+</code></pre>
+<p>The weighted adjacency matrix could look like this:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>0</td>
+<td>R1</td>
+<td>R2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>B</td>
+<td>R1</td>
+<td>0</td>
+<td>0</td>
+<td>R3</td>
+</tr>
+<tr>
+<td>C</td>
+<td>R2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>D</td>
+<td>0</td>
+<td>R3</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="7-adjacency-list-representation">7. <strong>Adjacency List Representation:</strong></h3>
+<p>Alternatively, you can represent the circuit as an <strong>adjacency list</strong>, where each node points to a list of connected nodes and their respective resistances.</p>
+<p>Example for a circuit with resistors between A-B, B-C, and C-D:</p>
+<pre><code class="language-python">circuit = {
+    'A': [('B', 10)],
+    'B': [('A', 10), ('C', 20)],
+    'C': [('B', 20), ('D', 30)],
+    'D': [('C', 30)]
+}
+</code></pre>
+<h3 id="conclusion">Conclusion:</h3>
+<p>These different representations of circuits in graph theory give us various ways to manipulate and analyze circuits, particularly when calculating equivalent resistance or simplifying the circuit. You can apply algorithms to these representations to compute equivalent resistances in series, parallel, or more complex configurations, like those with cycles.</p>
+<p>Would you like to see more about one of these representations or a specific example of circuit reduction using one of these models? Let me know!</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
