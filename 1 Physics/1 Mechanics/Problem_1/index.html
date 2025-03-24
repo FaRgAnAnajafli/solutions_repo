@@ -261,69 +261,10 @@ R = \frac{v_0^2 \sin(2\theta)}{g}
 <p>These real-world factors complicate the model, but for simplicity, we will focus on the idealized case described above.</p>
 <h4 id="4-implementation">4. <strong>Implementation:</strong></h4>
 <p>We will now develop a Python script to simulate projectile motion and visualize the range as a function of the launch angle <span class="arithmatex">\(\theta\)</span> for different initial velocities and gravitational accelerations.</p>
-<p>Here is the Python code:</p>
-<pre><code class="language-python">import numpy as np
-import matplotlib.pyplot as plt
-
-# Function to calculate the range of a projectile
-def range_of_projectile(v0, theta, g=9.81):
-    # Convert angle to radians
-    theta_rad = np.radians(theta)
-    # Calculate range using the formula
-    R = (v0**2 * np.sin(2 * theta_rad)) / g
-    return R
-
-# Parameters for the simulation
-v0 = 20  # Initial velocity in m/s
-g = 9.81  # Gravitational acceleration in m/s^2
-
-# Range of angles to test
-angles = np.linspace(0, 90, 91)
-
-# Calculate the range for each angle
-ranges = [range_of_projectile(v0, angle, g) for angle in angles]
-
-# Plot the range vs. angle of projection
-plt.figure(figsize=(8, 6))
-plt.plot(angles, ranges, label=f'v0 = {v0} m/s', color='b')
-plt.title('Range of Projectile vs Angle of Projection')
-plt.xlabel('Angle of Projection (degrees)')
-plt.ylabel('Range (meters)')
-plt.grid(True)
-plt.axvline(x=45, color='r', linestyle='--', label='Optimal Angle (45°)')
-plt.legend()
-plt.show()
-
-# Varying initial velocity
-v0_values = [15, 20, 25]
-plt.figure(figsize=(8, 6))
-for v0 in v0_values:
-    ranges_vary_v0 = [range_of_projectile(v0, angle, g) for angle in angles]
-    plt.plot(angles, ranges_vary_v0, label=f'v0 = {v0} m/s')
-
-plt.title('Range of Projectile vs Angle of Projection for Different Initial Velocities')
-plt.xlabel('Angle of Projection (degrees)')
-plt.ylabel('Range (meters)')
-plt.grid(True)
-plt.axvline(x=45, color='r', linestyle='--', label='Optimal Angle (45°)')
-plt.legend()
-plt.show()
-
-# Varying gravitational acceleration (simulating different planets)
-g_values = [3.7, 9.81, 24.79]  # Mars, Earth, Jupiter
-plt.figure(figsize=(8, 6))
-for g_val in g_values:
-    ranges_vary_g = [range_of_projectile(v0, angle, g_val) for angle in angles]
-    plt.plot(angles, ranges_vary_g, label=f'g = {g_val} m/s²')
-
-plt.title('Range of Projectile vs Angle of Projection for Different Gravitational Accelerations')
-plt.xlabel('Angle of Projection (degrees)')
-plt.ylabel('Range (meters)')
-plt.grid(True)
-plt.axvline(x=45, color='r', linestyle='--', label='Optimal Angle (45°)')
-plt.legend()
-plt.show()
-</code></pre>
+<p>Here is the Python code:
+<img alt="alt text" src="../image-9.png"/>
+<img alt="alt text" src="../image-11.png"/>
+<img alt="alt text" src="../image-12.png"/></p>
 <h3 id="explanation-of-the-code"><strong>Explanation of the Code:</strong></h3>
 <ol>
 <li><strong><code>range_of_projectile</code> function</strong>: 
