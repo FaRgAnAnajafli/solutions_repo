@@ -42,9 +42,9 @@ While G has more than one node:
     2. Identify all parallel connections:
         - A parallel connection occurs when two resistors are connected between the same two nodes.
         - Combine these resistors using the parallel resistance formula:
-          \[
+          $$
           R_{eq} = \left( \sum_{i=1}^{n} \frac{1}{R_i} \right)^{-1}
-          \]
+          $$
         - Replace the two parallel resistors with a single edge having the equivalent resistance.
     
     3. Repeat until only one node remains in the graph.
