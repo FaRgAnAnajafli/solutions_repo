@@ -1,5 +1,4 @@
 # Problem 1
-
 ### Option 1: Simplified Task – Algorithm Description
 
 To calculate the **equivalent resistance** using graph theory, the key idea is to represent the electrical circuit as a **graph**, where:
@@ -19,9 +18,9 @@ Here's an outline of the algorithm and pseudocode for calculating the equivalent
 2. **Identify and Simplify Series and Parallel Connections:**
    - **Series Connection:** Resistors in series can be reduced by summing their resistances.
    - **Parallel Connection:** Resistors in parallel can be reduced by the formula:
-     \[
+     $$
      \frac{1}{R_{eq}} = \sum_{i=1}^{n} \frac{1}{R_i}
-     \]
+     $$
    where \(R_i\) are the resistances of the resistors in parallel.
 3. **Iterate:** Keep identifying series and parallel combinations and reduce them until only one equivalent resistance remains.
 4. **Return the Equivalent Resistance:** The final graph will have one node, with the edge representing the total equivalent resistance.
@@ -42,9 +41,9 @@ While G has more than one node:
     2. Identify all parallel connections:
         - A parallel connection occurs when two resistors are connected between the same two nodes.
         - Combine these resistors using the parallel resistance formula:
-          $$
+          \[
           R_{eq} = \left( \sum_{i=1}^{n} \frac{1}{R_i} \right)^{-1}
-          $$
+          \]
         - Replace the two parallel resistors with a single edge having the equivalent resistance.
     
     3. Repeat until only one node remains in the graph.
