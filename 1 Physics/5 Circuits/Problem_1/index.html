@@ -284,45 +284,12 @@ Return the equivalent resistance value of the final node in the graph.
 <li>Once the graph is reduced to a single node, return the total resistance as the equivalent resistance of the circuit.</li>
 </ol>
 <h4 id="python-implementation-using-networkx-sketch"><strong>Python Implementation Using NetworkX (Sketch)</strong></h4>
-<pre><code class="language-python">import networkx as nx
-
-def equivalent_resistance(graph):
-    while len(graph.nodes) &gt; 1:
-        # Identify series connections
-        for edge in list(graph.edges(data=True)):
-            u, v, data = edge
-            if is_series(u, v):
-                resistance_sum = data['weight']  # Combine resistances
-                graph.add_edge(u, v, weight=resistance_sum)  # Update edge
-                graph.remove_edge(u, v)  # Remove old edge
-
-        # Identify parallel connections
-        for edge in list(graph.edges(data=True)):
-            u, v, data = edge
-            if is_parallel(u, v):
-                resistance_parallel = parallel_resistance(u, v)
-                graph.add_edge(u, v, weight=resistance_parallel)
-                graph.remove_edge(u, v)  # Remove old parallel edges
-
-    # Return final equivalent resistance
-    return graph.nodes[0]['resistance']
-
-# Helper function to check series connection
-def is_series(u, v):
-    # Check if u and v are in series based on graph structure
-    pass
-
-# Helper function to check parallel connection
-def is_parallel(u, v):
-    # Check if u and v are in parallel based on graph structure
-    pass
-
-# Calculate parallel resistance
-def parallel_resistance(u, v):
-    # Use the formula for parallel resistance
-    pass
-</code></pre>
-<hr/>
+<ol>
+<li>Graph Drawing and Visualization
+It’s often useful to visualize your circuit graphically to better understand the structure of your circuit. This can be done with Matplotlib and NetworkX.</li>
+</ol>
+<p>Visualizing the Graph:
+<img alt="alt text" src="../image.png"/></p>
 <h3 id="efficiency-analysis"><strong>Efficiency Analysis:</strong></h3>
 <ul>
 <li>
