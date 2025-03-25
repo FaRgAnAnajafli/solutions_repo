@@ -208,9 +208,9 @@
 <li><strong>Identify and Simplify Series and Parallel Connections:</strong></li>
 <li><strong>Series Connection:</strong> Resistors in series can be reduced by summing their resistances.</li>
 <li><strong>Parallel Connection:</strong> Resistors in parallel can be reduced by the formula:
-     [
+     $$
      \frac{1}{R_{eq}} = \sum_{i=1}^{n} \frac{1}{R_i}
-     ]
+     $$
    where <span class="arithmatex">\(R_i\)</span> are the resistances of the resistors in parallel.</li>
 <li><strong>Iterate:</strong> Keep identifying series and parallel combinations and reduce them until only one equivalent resistance remains.</li>
 <li><strong>Return the Equivalent Resistance:</strong> The final graph will have one node, with the edge representing the total equivalent resistance.</li>
@@ -228,9 +228,9 @@ While G has more than one node:
     2. Identify all parallel connections:
         - A parallel connection occurs when two resistors are connected between the same two nodes.
         - Combine these resistors using the parallel resistance formula:
-          $$
+          \[
           R_{eq} = \left( \sum_{i=1}^{n} \frac{1}{R_i} \right)^{-1}
-          $$
+          \]
         - Replace the two parallel resistors with a single edge having the equivalent resistance.
 
     3. Repeat until only one node remains in the graph.
