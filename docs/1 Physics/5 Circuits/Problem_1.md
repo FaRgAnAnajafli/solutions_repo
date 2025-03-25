@@ -89,47 +89,11 @@ For a more advanced implementation, you would follow these general steps:
 
 #### **Python Implementation Using NetworkX (Sketch)**
 
-```python
-import networkx as nx
+6. Graph Drawing and Visualization
+It’s often useful to visualize your circuit graphically to better understand the structure of your circuit. This can be done with Matplotlib and NetworkX.
 
-def equivalent_resistance(graph):
-    while len(graph.nodes) > 1:
-        # Identify series connections
-        for edge in list(graph.edges(data=True)):
-            u, v, data = edge
-            if is_series(u, v):
-                resistance_sum = data['weight']  # Combine resistances
-                graph.add_edge(u, v, weight=resistance_sum)  # Update edge
-                graph.remove_edge(u, v)  # Remove old edge
-
-        # Identify parallel connections
-        for edge in list(graph.edges(data=True)):
-            u, v, data = edge
-            if is_parallel(u, v):
-                resistance_parallel = parallel_resistance(u, v)
-                graph.add_edge(u, v, weight=resistance_parallel)
-                graph.remove_edge(u, v)  # Remove old parallel edges
-    
-    # Return final equivalent resistance
-    return graph.nodes[0]['resistance']
-
-# Helper function to check series connection
-def is_series(u, v):
-    # Check if u and v are in series based on graph structure
-    pass
-
-# Helper function to check parallel connection
-def is_parallel(u, v):
-    # Check if u and v are in parallel based on graph structure
-    pass
-
-# Calculate parallel resistance
-def parallel_resistance(u, v):
-    # Use the formula for parallel resistance
-    pass
-```
-
----
+Visualizing the Graph:
+![alt text](image.png)
 
 ### **Efficiency Analysis:**
 
