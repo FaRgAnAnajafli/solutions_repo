@@ -11,7 +11,7 @@ Projectile motion is governed by two primary equations of motion—one for horiz
 
 - **Horizontal motion:**
   - The horizontal acceleration is zero (since there is no force acting horizontally in an ideal projectile motion scenario).
-  - The horizontal velocity is constant and denoted as \( v_x = v_0 \cos(\theta) \), where \( v_0 \) is the initial velocity and \( \theta \) is the angle of projection.
+  -$$ The horizontal velocity is constant and denoted as \( v_x = v_0 \cos(\theta) \), where \( v_0 \) is the initial velocity and \( \theta \) is the angle of projection.$$
 
 - **Vertical motion:**
   - The vertical motion is influenced by gravity. The vertical acceleration is constant at \( g \) (acceleration due to gravity), and we use the equation \( y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2 \), where \( y(t) \) is the vertical displacement at time \( t \).
@@ -134,4 +134,3 @@ While the model described above is an idealized version, real-world projectile m
 - **Discussion of Real-World Factors**: Analysis of how drag, wind, and uneven terrain might alter the idealized model, and how they could be incorporated into simulations.
 
 By investigating projectile motion, this project not only gives a deep understanding of classical mechanics but also provides a practical tool for simulating and analyzing real-world phenomena.
-
