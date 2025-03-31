@@ -14,7 +14,7 @@ Projectile motion is governed by two primary equations of motion—one for horiz
   -$$ The horizontal velocity is constant and denoted as \( v_x = v_0 \cos(\theta) \), where \( v_0 \) is the initial velocity and \( \theta \) is the angle of projection.$$
 
 - **Vertical motion:**
-   $$ The vertical motion is influenced by gravity. The vertical acceleration is constant at \( g \) (acceleration due to gravity), and we use the equation $$ \( y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2 \), where \( y(t) \) is the vertical displacement at time \( t \).
+   $$ The vertical motion is influenced by gravity. The vertical acceleration is constant at \( g \) (acceleration due to gravity), and we use the equation  \( y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2 \),$$ where \( y(t) \) is the vertical displacement at time \( t \).
 
 
 By solving these equations, we can derive expressions for both the time of flight and the range of the projectile.
