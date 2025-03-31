@@ -50,7 +50,8 @@ We'll simulate the interference of two waves emanating from two different points
 
 #### Python Code for Simulation:
 ![alt text](image.png)
-
+![alt text](image-2.png)
+![alt text](image-3.png)
 ### 4. **Explanation of the Simulation**
 
 In this simulation:
