@@ -10,11 +10,11 @@ This is a great project that touches on both theoretical and practical aspects o
 Projectile motion is governed by two primary equations of motion—one for horizontal movement and one for vertical movement. The key principles come from Newton’s second law of motion:
 
 - **Horizontal motion:**
-  - The horizontal acceleration is zero (since there is no force acting horizontally in an ideal projectile motion scenario).
-  -$$ The horizontal velocity is constant and denoted as \( v_x = v_0 \cos(\theta) \), where \( v_0 \) is the initial velocity and \( \theta \) is the angle of projection.$$
+  $$ The horizontal acceleration is zero (since there is no force acting horizontally in an ideal projectile motion scenario).
+  -The horizontal velocity is constant and denoted as \( v_x = v_0 \cos(\theta) \), where \( v_0 \) is the initial velocity and \( \theta \) is the angle of projection.
 
 - **Vertical motion:**
-   $$ The vertical motion is influenced by gravity. The vertical acceleration is constant at \( g \) (acceleration due to gravity), and we use the equation  \( y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2 \),$$ where \( y(t) \) is the vertical displacement at time \( t \).
+    The vertical motion is influenced by gravity. The vertical acceleration is constant at \( g \) (acceleration due to gravity), and we use the equation  \( y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2 \), where \( y(t) \) is the vertical displacement at time \( t \).$$
 
 
 By solving these equations, we can derive expressions for both the time of flight and the range of the projectile.
