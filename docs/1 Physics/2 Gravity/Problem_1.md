@@ -82,34 +82,6 @@ In engineering, this model is used for optimizing launch angles in devices like 
 
 Let’s implement the numerical simulation of projectile motion. We can calculate and plot the range as a function of the launch angle.
 
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Constants
-g = 9.81  # Gravitational acceleration (m/s^2)
-v0 = 20  # Initial velocity (m/s)
-
-# Range as a function of angle
-def calculate_range(v0, angle_deg, g):
-    angle_rad = np.radians(angle_deg)
-    R = (v0**2 * np.sin(2 * angle_rad)) / g
-    return R
-
-# Angles from 0 to 90 degrees
-angles = np.linspace(0, 90, 500)
-ranges = calculate_range(v0, angles, g)
-
-# Plot the results
-plt.figure(figsize=(8, 6))
-plt.plot(angles, ranges, label=f"v0 = {v0} m/s", color='b')
-plt.title("Range of a Projectile as a Function of Launch Angle")
-plt.xlabel("Launch Angle (degrees)")
-plt.ylabel("Range (meters)")
-plt.grid(True)
-plt.legend()
-plt.show()
-```
 
 This script will generate a graph of the range as a function of the launch angle for a fixed initial velocity of \( 20 \, \text{m/s} \). The plot will reveal that the range is maximized around \( 45^\circ \).
 
