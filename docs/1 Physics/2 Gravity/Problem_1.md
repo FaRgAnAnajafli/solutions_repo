@@ -1,109 +1,187 @@
 # Problem 1
-This is a great project that touches on both theoretical and practical aspects of projectile motion. Let’s break it down into digestible steps, addressing each section to ensure a comprehensive approach to the task.
+Kepler's Third Law is a fundamental principle in celestial mechanics that describes the relationship between the orbital period and the radius of an orbit, particularly for circular orbits. This relationship not only helps us understand the behavior of planets, moons, and artificial satellites but also serves as a critical tool in calculating masses, distances, and velocities in astronomy.
+
+Let’s break this task into clear steps:
 
 ---
 
-### 1. **Theoretical Foundation**
+### 1. **Derivation of Kepler's Third Law for Circular Orbits**
 
-**Derivation of Governing Equations:**
+To derive Kepler's Third Law, we begin with Newton's Law of Gravitation and the basic principles of circular motion.
 
-Projectile motion is governed by two primary equations of motion—one for horizontal movement and one for vertical movement. The key principles come from Newton’s second law of motion:
+#### Newton’s Law of Gravitation:
 
-- **Horizontal motion:**
-  $$ The horizontal acceleration is zero (since there is no force acting horizontally in an ideal projectile motion scenario).
-  -The horizontal velocity is constant and denoted as \( v_x = v_0 \cos(\theta) \), where \( v_0 \) is the initial velocity and \( \theta \) is the angle of projection.
+The gravitational force \( F \) between two masses \( m_1 \) and \( m_2 \) separated by a distance \( r \) is given by:
 
-- **Vertical motion:**
-    The vertical motion is influenced by gravity. The vertical acceleration is constant at \( g \) (acceleration due to gravity), and we use the equation  \( y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2 \), where \( y(t) \) is the vertical displacement at time \( t \).$$
+\[
+F = \frac{G m_1 m_2}{r^2}
+\]
 
+where:
+- \( G \) is the gravitational constant,
+- \( m_1 \) and \( m_2 \) are the masses of the two objects (e.g., a planet and its satellite),
+- \( r \) is the distance between their centers.
 
-By solving these equations, we can derive expressions for both the time of flight and the range of the projectile.
+#### Centripetal Force:
 
-1. **Time of flight**:
-   The projectile reaches the ground when \( y(t) = 0 \). Setting the vertical displacement equation equal to zero gives:
-   \[
-   0 = v_0 \sin(\theta) t - \frac{1}{2} g t^2
-   \]
-   Solving for \( t \), we get the time of flight \( T \):
-   \[
-   T = \frac{2 v_0 \sin(\theta)}{g}
-   \]
+For a satellite orbiting a planet in a circular orbit, the centripetal force required to keep the satellite in orbit is given by:
 
-2. **Range of the projectile**:
-   The range \( R \) is the horizontal distance traveled during the time of flight. Since the horizontal velocity is constant, the range is given by:
-   \[
-   R = v_x \cdot T = v_0 \cos(\theta) \cdot \frac{2 v_0 \sin(\theta)}{g}
-   \]
-   Simplifying, the expression for the range becomes:
-   \[
-   R = \frac{v_0^2 \sin(2\theta)}{g}
-   \]
+\[
+F = \frac{m_2 v^2}{r}
+\]
 
-This equation shows that the range is dependent on the initial velocity \( v_0 \), the gravitational acceleration \( g \), and the launch angle \( \theta \). The term \( \sin(2\theta) \) implies that the range is maximized when \( \theta = 45^\circ \).
+where:
+- \( m_2 \) is the mass of the satellite,
+- \( v \) is the orbital velocity of the satellite,
+- \( r \) is the orbital radius.
 
----
+At equilibrium, the gravitational force provides the centripetal force:
 
-### 2. **Analysis of the Range**
+\[
+\frac{G m_1 m_2}{r^2} = \frac{m_2 v^2}{r}
+\]
 
-**How does the range depend on the angle of projection?**
+Simplifying (and canceling out \( m_2 \)):
 
-The range equation derived above demonstrates that the horizontal range \( R \) is a function of \( \sin(2\theta) \). Since \( \sin(2\theta) \) reaches its maximum value of 1 when \( \theta = 45^\circ \), this means that, for a given initial velocity, the range is greatest at a projection angle of \( 45^\circ \).
+\[
+\frac{G m_1}{r^2} = \frac{v^2}{r}
+\]
 
-#### Influence of other parameters:
+Now, solving for the orbital velocity \( v \):
 
-- **Initial velocity \( v_0 \)**: 
-  - As expected, the range increases with the square of the initial velocity. A higher velocity leads to a larger range for a fixed angle.
-  
-- **Gravitational acceleration \( g \)**: 
-  - The range decreases with increasing gravitational acceleration, since \( g \) appears in the denominator. A larger value of \( g \) (for example, on a planet with stronger gravity) results in a shorter range.
+\[
+v = \sqrt{\frac{G m_1}{r}}
+\]
 
----
+#### Orbital Period:
 
-### 3. **Practical Applications**
+The orbital period \( T \) is the time taken for the satellite to complete one full orbit. The distance traveled in one orbit is the circumference of the orbit, \( 2 \pi r \), so the orbital period \( T \) is:
 
-This model, while idealized, can be adapted to describe a variety of real-world situations:
+\[
+T = \frac{2 \pi r}{v}
+\]
 
-- **Uneven terrain**: 
-  - If the projectile is launched from a height or lands at a different height, the equations need to be modified to account for the change in initial and final positions.
-  
-- **Air resistance (drag)**: 
-  - Air resistance causes the projectile to deviate from the ideal parabolic path. The equations become more complex and require numerical methods to solve. A drag force can be modeled using \( F_d = \frac{1}{2} C_d \rho A v^2 \), where \( C_d \) is the drag coefficient, \( \rho \) is the air density, \( A \) is the cross-sectional area, and \( v \) is the velocity.
+Substitute the expression for \( v \) from earlier:
 
-- **Wind**: 
-  - Wind introduces a horizontal force that can either accelerate or decelerate the projectile depending on its direction.
+\[
+T = \frac{2 \pi r}{\sqrt{\frac{G m_1}{r}}}
+\]
 
-In engineering, this model is used for optimizing launch angles in devices like catapults, rockets, or sports balls. Astrophysics also uses similar principles to predict the trajectories of satellites and spacecraft.
+Simplifying:
 
----
+\[
+T = 2 \pi \sqrt{\frac{r^3}{G m_1}}
+\]
 
-### 4. **Implementation**
+This is Kepler's Third Law, which shows that the square of the orbital period \( T^2 \) is directly proportional to the cube of the orbital radius \( r^3 \):
 
-**Python Script for Simulation:**
+\[
+T^2 \propto r^3
+\]
 
-Let’s implement the numerical simulation of projectile motion. We can calculate and plot the range as a function of the launch angle.
-
-
-This script will generate a graph of the range as a function of the launch angle for a fixed initial velocity of \( 20 \, \text{m/s} \). The plot will reveal that the range is maximized around \( 45^\circ \).
+This relationship holds true for any two objects orbiting each other under the influence of gravity, as long as the orbit is circular.
 
 ---
 
-### 5. **Discussion on Limitations and Realistic Factors**
+### 2. **Implications for Astronomy**
 
-While the model described above is an idealized version, real-world projectile motion is subject to several factors not accounted for in this simple model:
+Kepler’s Third Law provides a means to derive important astronomical quantities. Here are a few applications:
 
-- **Air resistance**: This can be included by modifying the differential equations to incorporate a drag term. Solving these equations analytically becomes challenging, but numerical methods can be used for simulations.
-  
-- **Wind and terrain**: A more complex model could include wind velocity and uneven terrain, both of which would modify the trajectory in non-trivial ways.
+#### Calculating Planetary Masses:
 
-- **Launch height**: If the projectile is launched from a height, the equation for the vertical motion needs to be adjusted to account for the initial vertical displacement.
+From the equation:
+
+\[
+T^2 = \frac{4 \pi^2 r^3}{G m_1}
+\]
+
+we can solve for the mass of the central body (e.g., a planet or star):
+
+\[
+m_1 = \frac{4 \pi^2 r^3}{G T^2}
+\]
+
+This allows astronomers to estimate the mass of planets or stars by observing the orbital period and radius of an orbiting satellite or planet.
+
+#### Determining Orbital Distances:
+
+Using Kepler’s Third Law, we can also determine the distance between two objects. If the mass of the central object is known (like the mass of the Sun for planets in the Solar System), we can solve for \( r \) given the orbital period \( T \).
+
+#### Implications for Satellite Orbits:
+
+For artificial satellites, the orbital period and radius are related by the same law, making it possible to calculate the required orbital radius for a specific satellite mission (e.g., geostationary satellites).
+
+---
+
+### 3. **Real-World Examples**
+
+#### The Moon's Orbit Around the Earth:
+
+The Moon’s orbital radius around Earth is approximately \( 384,400 \, \text{km} \), and its orbital period is about 27.3 days.
+
+Using Kepler’s Third Law, we can calculate the Moon’s orbital period for any given radius, or vice versa, based on the known mass of the Earth.
+
+#### The Planets in the Solar System:
+
+Kepler’s Third Law can be used to predict the orbital periods of planets around the Sun. For example, Earth’s orbital period is 365.25 days, and its orbital radius is \( 149.6 \, \text{million km} \). By applying the law, we can estimate the orbital periods of other planets and compare them to observations.
+
+---
+
+### 4. **Computational Model for Circular Orbits**
+
+We can create a simple Python script to simulate circular orbits and verify Kepler's Third Law. Below is an implementation that simulates orbits for different orbital radii and calculates the corresponding orbital periods.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+G = 6.67430e-11  # Gravitational constant (m^3 kg^-1 s^-2)
+m_sun = 1.989e30  # Mass of the Sun (kg)
+
+# Function to calculate orbital period using Kepler's Third Law
+def orbital_period(radius):
+    # Kepler's Third Law: T^2 = (4 * pi^2 * r^3) / (G * m_sun)
+    T = 2 * np.pi * np.sqrt(radius**3 / (G * m_sun))
+    return T
+
+# Define a range of orbital radii (in meters)
+radii = np.linspace(1e11, 1.5e12, 100)  # Orbital radius from 1e11 to 1.5e12 meters
+
+# Calculate the corresponding orbital periods (in seconds)
+periods = orbital_period(radii)
+
+# Plot the relationship between orbital period squared and orbital radius cubed
+plt.figure(figsize=(8, 6))
+plt.plot(radii**(3/2), periods, label="Orbital Period vs Radius")
+plt.xlabel(r"$r^{3/2}$ (m$^{3/2}$)")
+plt.ylabel("Orbital Period (s)")
+plt.title("Orbital Period as a Function of Orbital Radius")
+plt.grid(True)
+plt.legend()
+plt.show()
+```
+
+This script calculates the orbital period for a range of orbital radii and plots the relationship between the square of the orbital period and the cube of the orbital radius, verifying Kepler's Third Law.
+
+---
+
+### 5. **Extending to Elliptical Orbits and Other Celestial Bodies**
+
+While Kepler's Third Law as derived above is specifically for circular orbits, the law also applies to elliptical orbits. For elliptical orbits, the semi-major axis \( a \) (the average distance between the two bodies) replaces the orbital radius \( r \). Kepler's Third Law can be generalized to elliptical orbits as:
+
+\[
+T^2 \propto a^3
+\]
+
+where \( a \) is the semi-major axis of the ellipse. This form of Kepler’s Third Law is crucial for understanding the orbits of planets, comets, and satellites with elliptical paths.
 
 ---
 
 ### Deliverables
 
-- **Markdown Document**: Detailed derivation of the equations, analysis of the results, and discussion of practical applications.
-- **Python Script**: As shown above, with simulation of projectile motion and plotting.
-- **Graphs**: A graphical representation of range versus launch angle, showing how varying the initial velocity or gravitational acceleration affects the curve.
-- **Discussion of Real-World Factors**: Analysis of how drag, wind, and uneven terrain might alter the idealized model, and how they could be incorporated into simulations.
+- **Markdown Document**: A comprehensive explanation of Kepler's Third Law, its derivation, implications, and real-world examples.
+- **Python Script**: As shown above, simulating circular orbits and verifying Kepler’s Third Law.
+- **Graphs**: A plot showing the relationship between orbital period and radius, highlighting Kepler's Third Law.
+- **Discussion**: A detailed discussion on how Kepler’s Third Law extends to elliptical orbits and other celestial bodies, including its application in real-world scenarios like the Moon’s orbit, planetary orbits, and satellite missions.
 
-By investigating projectile motion, this project not only gives a deep understanding of classical mechanics but also provides a practical tool for simulating and analyzing real-world phenomena.
