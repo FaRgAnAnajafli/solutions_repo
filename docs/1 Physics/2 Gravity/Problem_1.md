@@ -130,37 +130,8 @@ Kepler’s Third Law can be used to predict the orbital periods of planets aroun
 ### 4. **Computational Model for Circular Orbits**
 
 We can create a simple Python script to simulate circular orbits and verify Kepler's Third Law. Below is an implementation that simulates orbits for different orbital radii and calculates the corresponding orbital periods.
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Constants
-G = 6.67430e-11  # Gravitational constant (m^3 kg^-1 s^-2)
-m_sun = 1.989e30  # Mass of the Sun (kg)
-
-# Function to calculate orbital period using Kepler's Third Law
-def orbital_period(radius):
-    # Kepler's Third Law: T^2 = (4 * pi^2 * r^3) / (G * m_sun)
-    T = 2 * np.pi * np.sqrt(radius**3 / (G * m_sun))
-    return T
-
-# Define a range of orbital radii (in meters)
-radii = np.linspace(1e11, 1.5e12, 100)  # Orbital radius from 1e11 to 1.5e12 meters
-
-# Calculate the corresponding orbital periods (in seconds)
-periods = orbital_period(radii)
-
-# Plot the relationship between orbital period squared and orbital radius cubed
-plt.figure(figsize=(8, 6))
-plt.plot(radii**(3/2), periods, label="Orbital Period vs Radius")
-plt.xlabel(r"$r^{3/2}$ (m$^{3/2}$)")
-plt.ylabel("Orbital Period (s)")
-plt.title("Orbital Period as a Function of Orbital Radius")
-plt.grid(True)
-plt.legend()
-plt.show()
-```
+![alt text](image-7.png)
+![alt text](image-6.png)
 
 This script calculates the orbital period for a range of orbital radii and plots the relationship between the square of the orbital period and the cube of the orbital radius, verifying Kepler's Third Law.
 
